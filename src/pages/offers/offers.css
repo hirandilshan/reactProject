@@ -1,0 +1,59 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+
+.offers {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: rgb(219, 227, 253);
+    padding: 0 7vw;
+    flex: 1;
+    text-align: center;
+
+}
+
+
+.offer {
+    width: 60%;
+    padding: 60px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.offer img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.offer h3 {
+    margin-top: 10px;
+    font-size: 40px;
+}
+
+.offer p {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.offer-details ul {
+    margin-top: 25px;
+    padding-left: 20px;
+}
+
+.offer-details ul li {
+    list-style-type: disc;
+    margin-bottom: 5px;
+}

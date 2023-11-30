@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+div.gallery {
+    width: 100%;
+    background-color: rgb(219, 227, 253);
+    padding: 0 7vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.gallery img {
+    width: 300px;
+    height: 180px;
+
+    padding: 10px;
+    margin-bottom: 10px;
+}
