@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -10,21 +11,21 @@ export default function Header() {
             <div class="account">
               <ul>
                 <li>
-                  <a href="/foodMenu">Order Now</a>
+                  <Link to="/foodMenu">Order Now</Link>
                 </li>
                 <li>
-                  <a href="././backend/user/goToCart">
+                  <Link to="././backend/user/goToCart">
                     <i class="material-icons">&#xe8cc;</i>
-                  </a>
+                  </Link>
                 </li>
 
-                <a href="#">
+                <Link to="#">
                   <li>
                     <i class="material-icons" id="search-icon1">
                       &#xe8b6;
                     </i>
                   </li>
-                </a>
+                </Link>
                 <div class="search" id="searchinput1">
                   <form method="POST" action="/searchP">
                     <input
@@ -42,77 +43,77 @@ export default function Header() {
             </div>
             <div class="nav">
               <ul>
-                <a href="/foodMenu">
+                <Link to="/foodMenu">
                   <li>Food Menu</li>
-                </a>
-                <a href="/serviceTypes">
+                </Link>
+                <Link to="/serviceTypes">
                   <li>Service Types</li>
-                </a>
-                <a href="/galary">
-                  <li>Galary</li>
-                </a>
-                <a href="/facilities">
+                </Link>
+                <Link to="/gallery">
+                  <li>Gallery</li>
+                </Link>
+                <Link to="/facilities">
                   <li>Facilities</li>
-                </a>
-                <a href="/offers">
+                </Link>
+                <Link to="/offers">
                   <li>Offers</li>
-                </a>
-                <a href="/about">
+                </Link>
+                <Link to="/about">
                   <li>About</li>
-                </a>
-                <a href="/reservation">
+                </Link>
+                <Link to="/reservation">
                   <li>Reservation</li>
-                </a>
+                </Link>
               </ul>
             </div>
           </div>
 
           <div class="logo">
-            <a href="/index">
+            <Link to="/index">
               <img src="./images/eatout logo.jpg" alt="" width="50"></img>
-            </a>
+            </Link>
           </div>
           <div class="nav">
             <ul>
-              <a href="/foodMenu">
+              <Link to="/foodMenu">
                 <li>Food Menu</li>
-              </a>
-              <a href="/serviceTypes">
+              </Link>
+              <Link to="/serviceTypes">
                 <li>Service Types</li>
-              </a>
-              <a href="/galary">
-                <li>Galary</li>
-              </a>
-              <a href="/facilities">
+              </Link>
+              <Link to="/gallery">
+                <li>Gallery</li>
+              </Link>
+              <Link to="/facilities">
                 <li>Facilities</li>
-              </a>
-              <a href="/offers">
+              </Link>
+              <Link to="/offers">
                 <li>Offers</li>
-              </a>
-              <a href="/About">
-                <li>About</li>
-              </a>
-              <a href="/reservation">
+              </Link>
+              <Link to="/about">
+                  <li>About</li>
+                </Link>
+              <Link to="/reservation">
                 <li>Reservation</li>
-              </a>
+              </Link>
             </ul>
           </div>
           <div class="bar">
             <ul>
-              <a href="#">
+              <Link to="#">
                 <li>
                   <i class="material-icons" id="navbar-icon">
                     &#xe5d2;
                   </i>
                 </li>
-              </a>
-              <a href="">
+              </Link>
+              <Link to="">
                 <li>
                   <i class="material-icons" id="cancel">
                     &#xe5c9;
                   </i>
                 </li>
-              </a>
+              </Link>
             </ul>
           </div>
           <form method="POST" action="/searchP">
@@ -129,12 +130,12 @@ export default function Header() {
           <div class="icon">
             <ul>
               <li>
-                <a href="/foodMenu">Order Now</a>
+                <Link to="/foodMenu">Order Now</Link>
               </li>
               <li>
-                <a href="././backend/user/goToCart">
+                <Link to="././backend/user/goToCart">
                   <i class="material-icons">&#xe8cc;</i>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

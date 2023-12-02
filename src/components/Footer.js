@@ -12,7 +12,7 @@ export default function Footer() {
                 <div>
                     <address>
                         <p>Email:hirannishshanka@gmail.com</p>
-                        <p>GitHub: <a href="https://github.com/hirandilshan">hirandilshan</a></p>
+                        <p>GitHub: <a herf="https://github.com/hirandilshan">hirandilshan</a></p>
                         <p>Mr.Hiran Nishshanka,<br/>Kegalle,<br/>SriLanka.</p>
                     </address>
                 </div>

@@ -8,6 +8,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import About from './pages/about/About';
+import Index from './pages/home/Index';
+import Facility from './pages/facilities/Facility';
+import Gallery from './pages/gallery/Gallery';
+import Offers from './pages/offers/Offers';
+import ServiceType from './pages/serviceType/ServiceType';
+import Reservation from './pages/reservation/Reservation';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +23,38 @@ const router = createBrowserRouter([
   {
     path: "about",
     element: <About/>,
+  },
+  {
+    path: "index",
+    element: <Index/>,
+  },
+  {
+    path: "facilities",
+    element: <Facility/>,
+  },
+  {
+    path: "gallery",
+    element: <Gallery/>,
+  },
+  {
+    path: "offers",
+    element: <Offers/>,
+  },
+  {
+    path: "serviceTypes",
+    element: <ServiceType/>,
+  },
+  {
+    path: "reservation",
+    element: <Reservation/>,
+  },
+  {
+    path: "offers",
+    element: <Offers/>,
+  },
+  {
+    path: "offers",
+    element: <Offers/>,
   },
 ]);
 
