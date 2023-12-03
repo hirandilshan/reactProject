@@ -2,6 +2,7 @@ import React from 'react'
 import './serviceType.css'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import { Link } from "react-router-dom";
 
 export default function ServiceType() {
   return (
@@ -18,7 +19,7 @@ export default function ServiceType() {
             <div class="service-type">
                 <img src="../../img/dinein.jpeg" alt="Dine-In "/>
                 <h3>Dine-In</h3>
-                <a href="reservation.php" class="button">Reservations</a>
+                <Link to="/reservation" class="button">Reservations</Link>
                 <p>Enjoy a delicious meal in our comfortable dining area.Immerse yourself in a warm and inviting ambiance while relishing our chef's specialties.</p>
             </div>
             <div class="service-type">
@@ -30,7 +31,7 @@ export default function ServiceType() {
                 <img src="../../img/delivery.jpeg" alt="Delivery"/>
 
                 <h3>Delivery</h3>
-                <a href="../../frontend/user/menu.php" class="button">Order Now</a>
+                <Link to="/foodMenu" class="button">Order Now</Link>
                 <p>We'll deliver your meal right to your doorstep.Enjoy a restaurant-quality meal in the comfort of your own home without any hassle.</p>
             </div>
 

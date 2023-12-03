@@ -14,6 +14,10 @@ import Gallery from './pages/gallery/Gallery';
 import Offers from './pages/offers/Offers';
 import ServiceType from './pages/serviceType/ServiceType';
 import Reservation from './pages/reservation/Reservation';
+import FoodMenu from './pages/foodMenu/FoodMenu';
+import Signup from './pages/signup/Signup';
+import Login from './pages/login/Login';
+import Burgers from './pages/foodMenu/foodItems/Burgers';
 
 const router = createBrowserRouter([
   {
@@ -48,13 +52,22 @@ const router = createBrowserRouter([
     path: "reservation",
     element: <Reservation/>,
   },
+  
   {
-    path: "offers",
-    element: <Offers/>,
+    path: "foodMenu",
+    element: <FoodMenu/>,
   },
   {
-    path: "offers",
-    element: <Offers/>,
+    path: "signup",
+    element: <Signup/>,
+  },
+  {
+    path: "login",
+    element: <Login/>,
+  },
+  {
+    path: "burgers",
+    element: <Burgers/>,
   },
 ]);
 

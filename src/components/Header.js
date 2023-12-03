@@ -6,6 +6,12 @@ export default function Header() {
   return (
     <div>
       <header>
+        <link rel="shortcut icon" href="../../images/eatout logo.jpg" type="images/x-icon"/>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>EAT OUT Restaurant</title>
+        <meta name="viewport" content="width=device-width,initial-scal=1.0"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
         <div class="header">
           <div class="headerbar">
             <div class="account">
@@ -131,6 +137,12 @@ export default function Header() {
             <ul>
               <li>
                 <Link to="/foodMenu">Order Now</Link>
+              </li>
+              <li>
+                <Link to="/signup">Sign Up</Link>
+              </li>
+              <li>
+                <Link to="/login">Log In</Link>
               </li>
               <li>
                 <Link to="././backend/user/goToCart">

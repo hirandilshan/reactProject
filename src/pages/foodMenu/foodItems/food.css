@@ -1,0 +1,138 @@
+
+
+
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(219, 227, 253);
+    padding: 0 7vw;
+    flex: 1;
+}
+
+
+
+
+
+.list {
+    padding-top: 50px;
+    padding-bottom: 100px;
+    width: 20%;
+
+}
+
+.list a {
+    font-size: 25px;
+    color: #470707;
+    font-weight: bold;
+    
+
+}
+
+.list a:hover {
+    text-decoration: underline;
+}
+
+.section2 {
+    width: 300px;
+    height: 120px;
+    border-radius: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 10px;
+    background-color: rgb(123, 195, 243);
+    margin-bottom: 10px;
+}
+
+.section2 img {
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+}
+
+.section2 a {
+    font-size: 20px;
+    float: right;
+    padding-right: 37px;
+    padding-top: 20px;
+    color: #470707;
+}
+
+.section2 a:hover {
+
+    text-decoration: underline;
+}
+
+.food-item {
+    display: block;
+}
+
+
+
+
+
+
+
+
+.choice {
+    text-align: center;
+    width: 80%;
+    margin: 50px auto;
+    padding: 10px;
+    padding-left: 150px;
+}
+
+.choice p {
+    font-size: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.choice .foods {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.foods .food-item {
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+    border: 1px solid rgb(78, 78, 78);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.food-item img {
+    width: 100%;
+    height: 200px;
+}
+
+.food-item h3 {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.food-item h4 {
+    font-size: 20px;
+    color: #00A000;
+    margin: 10px 0;
+}
+
+
+.food-item button {
+    padding: 5px 10px;
+    background-color: #300a0a;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.food-item button:hover {
+    background-color: #70591a;
+}

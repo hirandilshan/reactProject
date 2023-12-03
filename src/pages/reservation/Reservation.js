@@ -15,7 +15,7 @@ export default function Reservation() {
                 <p>Fill the date and time for the reservation.</p>
             </div>
             <div class="form-content">
-                <form action="../../backend/user/process_booking.php" method="post">
+                <form action="../../backend/user/process_booking" method="post">
                     <label>Date:</label>
                     <div class="inputs">
 

@@ -1,0 +1,108 @@
+.content {
+  background-color: rgb(219, 227, 253);
+  padding: 0 7vw;
+}
+
+.forms {
+  width: 600px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+
+.form-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-details h2 {
+  font-size: 50px;
+  color: #333;
+  font-weight: bold;
+  padding-bottom: 15px;
+
+}
+
+.form-details p {
+  float: left;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  padding-top: 40px;
+  padding-bottom: 50px;
+  padding-left: 10px;
+
+}
+
+.form-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.inputs {
+  margin-bottom: 15px;
+  text-align: center;
+
+}
+
+.inputs input {
+  border-radius: 20px;
+  width: 500px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.inputs label {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 5px;
+  padding: 15px;
+}
+
+.forgot-pass {
+  display: block;
+  text-align: right;
+  margin-bottom: 10px;
+  color: rgb(123, 195, 243);
+  text-decoration: none;
+}
+
+.forgot-pass:hover {
+  text-decoration: underline;
+}
+
+.form-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(123, 195, 243);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.form-content button:hover {
+  background-color: #286090;
+}
+
+.link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link a {
+  color: rgb(123, 195, 243);
+  text-decoration: none;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+.top-bar-links ul li a:hover {
+  text-decoration: underline;
+}
