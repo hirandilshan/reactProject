@@ -30,8 +30,10 @@ connection.once("open", ()=>{
 })
 
 const userRouter = require("./routes/users.js");
-
 app.use("/user",userRouter);
+
+const reservationRouter = require("./routes/reservations.js");
+app.use("/reservation",reservationRouter);
 
 app.listen(PORT,() =>{
     console.log(`Server is up and running on port ${PORT}`);

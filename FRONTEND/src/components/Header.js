@@ -12,27 +12,27 @@ export default function Header() {
         <title>EAT OUT Restaurant</title>
         <meta name="viewport" content="width=device-width,initial-scal=1.0"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-        <div class="header">
-          <div class="headerbar">
-            <div class="account">
+        <div className="header">
+          <div className="headerbar">
+            <div className="account">
               <ul>
                 <li>
                   <Link to="/foodMenu">Order Now</Link>
                 </li>
                 <li>
                   <Link to="././backend/user/goToCart">
-                    <i class="material-icons">&#xe8cc;</i>
+                    <i className="material-icons">&#xe8cc;</i>
                   </Link>
                 </li>
 
                 <Link to="#">
                   <li>
-                    <i class="material-icons" id="search-icon1">
+                    <i className="material-icons" id="search-icon1">
                       &#xe8b6;
                     </i>
                   </li>
                 </Link>
-                <div class="search" id="searchinput1">
+                <div className="search" id="searchinput1">
                   <form method="POST" action="/searchP">
                     <input
                       type="search"
@@ -40,14 +40,14 @@ export default function Header() {
                       name="Search-box"
                     ></input>
 
-                    <button class="search_btn" type="submit" id="searchBtn">
+                    <button className="search_btn" type="submit" id="searchBtn">
                       Search
                     </button>
                   </form>
                 </div>
               </ul>
             </div>
-            <div class="nav">
+            <div className="nav">
               <ul>
                 <Link to="/foodMenu">
                   <li>Food Menu</li>
@@ -74,12 +74,12 @@ export default function Header() {
             </div>
           </div>
 
-          <div class="logo">
+          <div className="logo">
             <Link to="/index">
               <img src="./images/eatout logo.jpg" alt="" width="50"></img>
             </Link>
           </div>
-          <div class="nav">
+          <div className="nav">
             <ul>
               <Link to="/foodMenu">
                 <li>Food Menu</li>
@@ -104,18 +104,18 @@ export default function Header() {
               </Link>
             </ul>
           </div>
-          <div class="bar">
+          <div className="bar">
             <ul>
               <Link to="#">
                 <li>
-                  <i class="material-icons" id="navbar-icon">
+                  <i className="material-icons" id="navbar-icon">
                     &#xe5d2;
                   </i>
                 </li>
               </Link>
               <Link to="">
                 <li>
-                  <i class="material-icons" id="cancel">
+                  <i className="material-icons" id="cancel">
                     &#xe5c9;
                   </i>
                 </li>
@@ -123,17 +123,17 @@ export default function Header() {
             </ul>
           </div>
           <form method="POST" action="/searchP">
-            <div class="search-input">
+            <div className="search-input">
               <div>
                 <input type="search" id="search-box" name="Search-box"></input>
               </div>
-              <button class="search_btn" type="submit" id="searchBtn">
+              <button className="search_btn" type="submit" id="searchBtn">
                 Search
               </button>
             </div>
           </form>
 
-          <div class="icon">
+          <div className="icon">
             <ul>
               <li>
                 <Link to="/foodMenu">Order Now</Link>
@@ -146,7 +146,7 @@ export default function Header() {
               </li>
               <li>
                 <Link to="././backend/user/goToCart">
-                  <i class="material-icons">&#xe8cc;</i>
+                  <i className="material-icons">&#xe8cc;</i>
                 </Link>
               </li>
             </ul>

@@ -1,26 +1,26 @@
 import React from 'react'
 import './about.css'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+
+
 
 
 
 export default function About() {
   return (
     <div>
-        <Header/>
-            <div class="about">
-        <div class="intro">
-            <div class="intro-image">
+        
+            <div className="about">
+        <div className="intro">
+            <div className="intro-image">
                 <img src="img/background.jpeg" alt="aboutUs"/>
                 <h1>About Us</h1>
             </div>
-            <div class="intro-text">
+            <div className="intro-text">
                 <h2>"Celebrating flavors, crafting experiences, and creating memories – welcome to our culinary journey, where passion meets the plate."</h2>
             </div>
         </div>
-        <div class="content">
-            <div class="Content1">
+        <div className="content">
+            <div className="Content1">
                 <h2>Our Story</h2>
                 <p>1988 nestled amidst the bustling streets of Colombo, Sri Lanka, a culinary dream took shape. It was a dream fueled by a passion for authentic flavors, a desire to celebrate the rich tapestry of Sri Lankan cuisine, and a vision to create a dining haven where memories would be woven through the magic of food.<br/>
 
@@ -37,8 +37,8 @@ export default function About() {
                     Join us on this gastronomic adventure, where the flavors of Sri Lanka come to life, and every meal is a celebration of heritage and authenticity. Come, be a part of our story, and let us enchant your senses with the tastes of our beloved island.
                 </p>
             </div>
-            <div class="content2">
-                <div class="first">
+            <div className="content2">
+                <div className="first">
                     <img src="img/hitry.jpg" alt="Resturent"/>
                     <div>
                         <h2>Our Mission</h2>
@@ -48,7 +48,7 @@ export default function About() {
 
 
                 </div>
-                <div class="secound">
+                <div className="secound">
                     <div>
                         <h2>Our Vision</h2>
                         <p>"At EAT OUT, our vision is to become the epitome of Sri Lankan culinary excellence on a global stage. We aspire to be the preferred choice for those seeking an authentic taste of Sri Lanka, known for our unwavering commitment to quality, innovation, and sustainability. Through continuous growth and expansion, we envision creating a network of restaurants that serve as ambassadors of Sri Lankan culture and cuisine, delighting patrons with every bite and leaving an indelible mark on the world's gastronomic map. Our aim is to celebrate the diverse flavors of Sri Lanka while fostering a deep sense of pride and connection to our roots, both locally and internationally."</p>
@@ -60,7 +60,7 @@ export default function About() {
 
         </div>
     </div>
-    <Footer/>
+    
       
     </div>
   )

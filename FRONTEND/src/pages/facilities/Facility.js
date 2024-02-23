@@ -1,22 +1,22 @@
 import React from 'react'
 import './facilities.css'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+
+
 
 export default function Facility() {
   return (
     <div>
-      <Header/>
-      <div class="content">
-        <div class="intro">
-            <div class="intro-image">
+      
+      <div className="content">
+        <div className="intro">
+            <div className="intro-image">
                 <img src="../../img/background.jpeg" alt="facility"/>
                 <h1>Our Facilities</h1>
             </div>
         </div>
 
-        <div class="facilities">
-            <div class="facility">
+        <div className="facilities">
+            <div className="facility">
                 <img src="../../img/wifi.jpeg" alt="WiFi Icon"/>
                 <div>
                     <h3>Free WiFi</h3>
@@ -24,7 +24,7 @@ export default function Facility() {
 
                 </div>
             </div>
-            <div class="facility">
+            <div className="facility">
                 <img src="../../img/parking.jpeg" alt="Parking Icon"/>
                 <div>
                     <h3>Ample Parking</h3>
@@ -32,7 +32,7 @@ export default function Facility() {
 
                 </div>
             </div>
-            <div class="facility">
+            <div className="facility">
                 <img src="../../img/outdoor.jpeg" alt="Outdoor Seating Icon"/>
                 <div>
                     <h3>Outdoor Seating</h3>
@@ -40,7 +40,7 @@ export default function Facility() {
 
                 </div>
             </div>
-            <div class="facility">
+            <div className="facility">
                 <img src="../../img/private.jpeg" alt="Private Dining Icon"/>
                 <div>
                     <h3>Private Dining</h3>
@@ -48,7 +48,7 @@ export default function Facility() {
 
                 </div>
             </div>
-            <div class="facility">
+            <div className="facility">
                 <img src="../../img/bar.jpeg" alt="Bar Icon"/>
                 <div>
                     <h3> Bar</h3>
@@ -59,7 +59,7 @@ export default function Facility() {
         </div>
 
     </div>
-    <Footer/>
+    
     </div>
   )
 }

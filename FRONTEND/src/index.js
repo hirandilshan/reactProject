@@ -18,8 +18,11 @@ import FoodMenu from './pages/foodMenu/FoodMenu';
 import Signup from './pages/signup/Signup';
 import Login from './pages/login/Login';
 import Burgers from './pages/foodMenu/foodItems/Burgers';
+import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
 
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <App/>,
@@ -74,7 +77,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <NavigationBar/>
     <RouterProvider router={router} />
+    <Footer/>
   </React.StrictMode>
 );
 

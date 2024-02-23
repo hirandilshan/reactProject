@@ -4,9 +4,9 @@ import "./style.css";
 export default function Footer() {
   return (
     <div>
-        <div class="footer">
-            <div class="footer-1">
-                <div class="logo">
+        <div className="footer">
+            <div className="footer-1">
+                <div className="logo">
                     <img src="../../images/eatout logo.jpg" alt=""/>
                 </div>
                 <div>
@@ -17,7 +17,7 @@ export default function Footer() {
                     </address>
                 </div>
             </div>
-            <div class="footer-2">
+            <div className="footer-2">
                 <img src="../../images/download.jpeg" alt=""/>
                 <h2>Powered by <em>HD Creations</em></h2>
             </div>
