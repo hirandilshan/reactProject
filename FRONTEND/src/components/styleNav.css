@@ -16,3 +16,14 @@
     color: rgb(247, 246, 245);
     text-shadow: 0 2px 15px rgb(2, 2, 2);
 }
+.logo{
+    font-size: 35px;
+}
+
+.login{
+    padding-left: 50px;
+}
+
+.login:hover {
+    color: blue !important;
+}

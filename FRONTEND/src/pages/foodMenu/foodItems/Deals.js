@@ -12,7 +12,7 @@ export default function Burgers() {
       .get("http://localhost:8070/foods/getFoods")
       .then((response) => {
         const filteredFoods = response.data.filter(
-          (foods) => foods.foodType === "Burgers"
+          (foods) => foods.foodType === "Deals"
         );
         setFoods(filteredFoods);
       })
@@ -79,7 +79,7 @@ export default function Burgers() {
         </div>
 
         <div className="choice">
-          <p>Burgers</p>
+          <p>Deals</p>
           <div className="foods">
             {foods.map((foods) => {
               return (

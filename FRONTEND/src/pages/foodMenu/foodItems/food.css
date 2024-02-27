@@ -2,7 +2,7 @@
 
 
 
-.menu {
+.item-menu {
     display: flex;
     flex-direction: row;
     background-color: rgb(219, 227, 253);

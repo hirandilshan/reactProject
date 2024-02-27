@@ -35,6 +35,9 @@ app.use("/user",userRouter);
 const reservationRouter = require("./routes/reservations.js");
 app.use("/reservation",reservationRouter);
 
+const foodsRouter = require("./routes/foods.js");
+app.use("/foods",foodsRouter);
+
 app.listen(PORT,() =>{
     console.log(`Server is up and running on port ${PORT}`);
 });
