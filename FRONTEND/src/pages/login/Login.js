@@ -1,8 +1,31 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './login.css'
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 export default function Login() {
+    const [email, setEmail]=useState("");
+    const [password, setPassword]=useState("");
+    const navigate =useNavigate()
+    
+
+    function sendData(e){
+        e.preventDefault();
+        
+        const checkUser ={
+            email,
+            password
+        }
+        axios.post("http://localhost:8070/user/checkLogin",checkUser).then(result=>{
+            console.log(result)
+            if(result.data ==="Success"){
+                navigate('/')
+            }
+        }).catch((err)=>{
+            alert("Username or Password incorrect")
+        })
+    }
   return (
     <div>
         
@@ -14,17 +37,17 @@ export default function Login() {
             </div>
             <div className="form-content">
 
-                <form method="POST" action="../../backend/user/loginP">
+            <form onSubmit={sendData}>
                     <div className="inputs">
-                        <input type="email" name="email" placeholder="E-mail" required/>
+                        <input type="email" name="email" placeholder="E-mail" required onChange={(e)=>{setEmail(e.target.value)}}/>
                         <label>Email</label>
                     </div>
                     <div className="inputs">
-                        <input type="password" name="password" placeholder="password" required/>
-                        <label>Password</label>
+                        <input type="password" name="password" placeholder="password" required onChange={(e)=>{setPassword(e.target.value)}}/>
+                        <label>password</label>
                     </div>
-                    <Link to="/signup" className="forgot-pass">Forgot password?</Link>
-                    <button type="submit">Log In</button>
+
+                    <button type="submit" name="submit">Sign Up</button>
                 </form>
                 <div className="link">
                     Don't have an account?

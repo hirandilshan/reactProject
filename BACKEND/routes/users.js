@@ -22,6 +22,30 @@ router.route("/add").post((req,res)=>{
     })
 })
 
+router.route("/checkLogin").post((req,res)=>{
+    const email =req.body.email;
+    const password =req.body.password;
+    User.findOne({email: email})
+    .then(user =>{
+        if(user){
+            if(user.password=== password){
+                res.json("Success")
+            
+            }else{
+                res.status(401).json({ message: "Password is incorrect" });
+                
+            }
+        }else{
+            res.status(404).json({ message: "No registered user" });
+        }
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        res.status(500).json({ message: "Internal Server Error" });
+    });
+
+})
+
 router.route("/display").get((req,res)=>{
     User.find().then((users)=>{
         res.json(users);
@@ -67,5 +91,7 @@ router.route("/get/:id").get(async(req,res)=>{
     
     })
 })
+
+
 
 module.exports= router;

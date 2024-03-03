@@ -372,3 +372,73 @@ body {
     color: #f0f0f0;
 
 }
+
+@media only screen and (max-width: 700px) {
+    .letter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 50px;
+    }
+    
+    .letter-head {
+        flex: 0.5;
+    }
+    
+    .letter-head h2 {
+        font-size: 15px;
+    }
+    
+    .letter-head span {
+        color: red;
+    }
+    
+    .letter-input {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        flex: 0.5;
+    }
+    
+    .letter-input div {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        background-color: rgb(123, 195, 243);
+    }
+    
+    .letter-input input {
+        font-size: 15px;
+        padding: 10px;
+        outline: none;
+        width: 100%;
+        border: none;
+        background-color: rgb(123, 195, 243);
+    }
+    
+    .letter-input .red_btn {
+        margin: 0;
+        font-size: 10px;
+        box-shadow: none;
+        border-radius: 0 10px 10px 0;
+    }
+    .reviews {
+        margin: 20px 0;
+        text-align: center;
+    }
+    
+    .reviews p {
+    
+        background-color: rgb(123, 195, 243);
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-top: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #f0f0f0;
+    
+    }
+
+}

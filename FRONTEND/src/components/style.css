@@ -138,7 +138,7 @@
 
 
 .footer {
-    padding: 60px 0;
+    padding: 20px 0;
     border-top: 2px solid rgb(10, 10, 10);
     background-color: rgb(123, 195, 243);
     display: flex;
@@ -148,7 +148,8 @@
 }
 
 .footer-1 .logo img {
-    width: 150px;
+    width: 100px;
+    height: 100px;
 }
 
 .footer-1 p {
@@ -165,6 +166,7 @@
 
 .footer-2 h2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
 }
 
 .footer-2 img {
