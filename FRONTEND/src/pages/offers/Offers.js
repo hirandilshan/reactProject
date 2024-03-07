@@ -1,8 +1,5 @@
-import React from 'react'
-import './offers.css'
-
-
-
+import React from 'react';
+import './offers.css';
 export default function Offers() {
   return (
     <div>

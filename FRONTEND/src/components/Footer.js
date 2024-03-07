@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import "./style.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
                 <div>
                     <address>
                         <p>Email:hirannishshanka@gmail.com</p>
-                        <p>GitHub: <a herf="https://github.com/hirandilshan">hirandilshan</a></p>
+                        <p>GitHub: <Link to="https://github.com/hirandilshan">hirandilshan</Link></p>
                         <p>Mr.Hiran Nishshanka,<br/>Kegalle,<br/>SriLanka.</p>
                     </address>
                 </div>

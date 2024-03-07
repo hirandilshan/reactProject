@@ -67,6 +67,11 @@ router.route('/token').get(verifyUser, (req, res) => {
 
 })
 
+router.route('/logout').get((req,res)=>{
+    res.clearCookie('token')
+    return res.json("logout")
+})
+
 router.route("/display").get((req,res) =>{
     User.find().then((users)=>{
         res.json(users);

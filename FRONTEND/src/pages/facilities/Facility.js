@@ -1,8 +1,5 @@
-import React from 'react'
-import './facilities.css'
-
-
-
+import React from 'react';
+import './facilities.css';
 export default function Facility() {
   return (
     <div>
