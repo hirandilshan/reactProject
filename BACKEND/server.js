@@ -3,14 +3,22 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors= require("cors");
 const dotenv= require("dotenv");
-const app =express(); 
-require("dotenv").config();
+const app =express();
+const bcrypt =require('bcrypt') 
+const jwt =require("jsonwebtoken");
+const cookieParsar =require("cookie-parser")
+dotenv.config();
 
 
 const PORT =process.env.PORT || 8070;
 
-app.use(cors());
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    methods:["GET","POST"],
+    credentials: true
+}));
 app.use(bodyParser.json());
+app.use(cookieParsar())
 
 const URL=process.env.MONGODB_URL;
 

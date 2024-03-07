@@ -1,4 +1,4 @@
-
+import React , {useEffect ,useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -7,10 +7,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./styleNav.css";
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 
 
 function NavigationBar() {
+  const [logIn, setLogIn] = useState("LogIn");
+  axios.defaults.withCredentials = true;
+  useEffect(()=>{
+      axios.get("http://localhost:8070/user/token")
+      .then(result=>{console.log(result)
+          if(result.data!=="Success"){
+              setLogIn("LogIn");
+          }else{
+              setLogIn("LogOut");
+          }
+      })
+  })
 
 
 ;
@@ -42,7 +55,7 @@ function NavigationBar() {
                 Facilities
               </NavDropdown.Item>
               <NavDropdown.Item href="#action5">
-                Logout
+                {logIn}
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
@@ -56,7 +69,7 @@ function NavigationBar() {
             <Button variant="outline-success">Search</Button>
           </Form>
           <Form className="login">
-           <Button variant="outline-success" as={Link} to="/login" >LogIn</Button>
+           <Button variant="outline-success" as={Link} to="/login" >{logIn}</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

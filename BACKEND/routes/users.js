@@ -1,5 +1,6 @@
 const router =require("express").Router();
 let User=require("../models/user");
+const jwt =require("jsonwebtoken");
 
 
 router.route("/add").post((req,res)=>{
@@ -29,6 +30,8 @@ router.route("/checkLogin").post((req,res)=>{
     .then(user =>{
         if(user){
             if(user.password=== password){
+                const token= jwt.sign({email: user.email},"jwt167486",{expiresIn: "1d"})
+                res.cookie("token",token, { httpOnly: true })
                 res.json("Success")
             
             }else{
@@ -46,7 +49,25 @@ router.route("/checkLogin").post((req,res)=>{
 
 })
 
-router.route("/display").get((req,res)=>{
+const verifyUser = (req, res, next) =>{
+    const token =req.cookies.token;
+    if(!token){
+        return res.json("The token was not availble")
+    }else{
+        jwt.verify(token,"jwt167486",(err,decoded) =>{
+            if(err) return res.json("token wrong")
+            next();
+        })
+    }
+}
+
+router.route('/token').get(verifyUser, (req, res) => {
+
+    return res.json("Success")
+
+})
+
+router.route("/display").get((req,res) =>{
     User.find().then((users)=>{
         res.json(users);
     }).catch((err)=>{

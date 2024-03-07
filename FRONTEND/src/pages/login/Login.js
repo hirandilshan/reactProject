@@ -11,6 +11,7 @@ export default function Login() {
     
 
     function sendData(e){
+        axios.defaults.withCredentials =true;
         e.preventDefault();
         
         const checkUser ={

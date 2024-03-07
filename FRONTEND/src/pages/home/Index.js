@@ -1,11 +1,13 @@
 import React from 'react'
 
+
 import './index.css'
 
 
 
 
 export default function Index() {
+
   return (
     <div>
         
@@ -13,6 +15,8 @@ export default function Index() {
       <div className="home">
         <div className="main_slide">
             <div>
+
+                
                 <h1>Enjoy <span>Delicious Food</span> is Your Healthy Life.</h1>
                 <p>EAT OUT Restaurant has been a local favorite for more than a decade, situated near the coastal lines of the western province of Sri Lanka. Savannah is known for its authentic Sri Lankan food, exotic Indian and Chinese cuisine and a blend of western and continental dishes.</p>
                 <form method='POST' action='./frontend/user/facilities'>
