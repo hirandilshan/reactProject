@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState } from 'react'
 import './login.css'
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,8 @@ export default function Login() {
     const [email, setEmail]=useState("");
     const [password, setPassword]=useState("");
     const navigate =useNavigate()
+
+
     
 
     function sendData(e){
@@ -22,6 +24,7 @@ export default function Login() {
             console.log(result)
             if(result.data ==="Success"){
                 navigate('/')
+                window.location.reload();
             }
         }).catch((err)=>{
             alert("Username or Password incorrect")
