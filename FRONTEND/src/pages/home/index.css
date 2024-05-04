@@ -356,15 +356,16 @@ body {
 }
 
 .reviews {
-    margin: 20px 0;
+    padding-bottom: 5px;
     text-align: center;
+
 }
 
 .reviews p {
 
     background-color: rgb(123, 195, 243);
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 2px solid #0e0d0d;
     border-radius: 5px;
     margin-top: 5px;
     font-size: 18px;
@@ -424,14 +425,15 @@ body {
         border-radius: 0 10px 10px 0;
     }
     .reviews {
-        margin: 20px 0;
+        
+        
         text-align: center;
     }
     
     .reviews p {
     
         background-color: rgb(123, 195, 243);
-        padding: 20px;
+        padding: 10px;
         border: 1px solid #ddd;
         border-radius: 5px;
         margin-top: 5px;

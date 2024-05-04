@@ -1,12 +1,67 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import jwt_decode from 'jwt-decode';
+import { Link } from "react-router-dom";
+import './index.css';
 
 
-import './index.css'
 
 
 
 
 export default function Index() {
+    const [review, setReview] = useState("");
+    const [userName, setUserName] = useState("");
+
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decoded = jwt_decode(token);
+                setUserName(decoded.email); // Assuming the decoded token contains an email field
+            } catch (error) {
+                console.error("JWT decoding error:", error);
+            }
+        }
+    }, []);
+
+
+    
+
+    const sendData = (e) => {
+        e.preventDefault();
+        
+        if (!review || !userName) {
+            alert("Missing review or user information.");
+            return;
+        }
+
+        const newReview = { userName, review };
+
+        axios.post("http://localhost:8070/review/addReview", newReview)
+            .then(() => {
+                alert("Review submitted");
+                setReview(""); // Clear the review state
+            })
+            .catch(error => {
+                console.error("Error submitting review:", error);
+                alert("Failed to submit review: " + error.message);
+            });
+    };
+
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+      axios
+        .get("http://localhost:8070/review/display")
+        .then((response) => {
+            setReviews(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
 
   return (
     <div>
@@ -19,9 +74,9 @@ export default function Index() {
                 
                 <h1>Enjoy <span>Delicious Food</span> is Your Healthy Life.</h1>
                 <p>EAT OUT Restaurant has been a local favorite for more than a decade, situated near the coastal lines of the western province of Sri Lanka. Savannah is known for its authentic Sri Lankan food, exotic Indian and Chinese cuisine and a blend of western and continental dishes.</p>
-                <form method='POST' action='./frontend/user/facilities'>
+                <Link to="/foodMenu">
                     <button type="submit" className="red_btn">Visit Now</button>
-                </form>
+                </Link>
             </div>
             <div>
                 <img src="images/burger.jpg" alt="burger"></img>
@@ -34,9 +89,9 @@ export default function Index() {
                 </div>
                 <h3>Burger</h3>
                 <p>chicken burgur with spicy chicken and potato chips </p>
-                <form method='POST' action='./frontend/user/foodMenu'>
+                <Link to="/foodMenu">
                     <button type="submit" className="red_btn">See Menu</button>
-                </form>
+                </Link>
             </div>
             <div className="item">
                 <div>
@@ -44,9 +99,9 @@ export default function Index() {
                 </div>
                 <h3>Cheese Koththu</h3>
                 <p>Using curd instead of cheese, this kottu has a tart kick that's also fatty and milky in a way that works with spices at play</p>
-                <form method='POST' action='./frontend/user/foodMenu'>
+                <Link to="/foodMenu">
                     <button type="submit" className="red_btn">See Menu</button>
-                </form>
+                </Link>
             </div>
             <div className="item">
                 <div>
@@ -54,9 +109,9 @@ export default function Index() {
                 </div>
                 <h3>Biriyani</h3>
                 <p>Biryani, flavourful rice dish of Persian origin that has become a popular celebratory dish in South Asia</p>
-                <form method='POST' action='./frontend/user/foodMenu'>
+                <Link to="/foodMenu">
                     <button type="submit" className="red_btn">See Menu</button>
-                </form>
+                </Link>
             </div>
         </div>
         <div className="main_slide2">
@@ -159,24 +214,42 @@ export default function Index() {
             </div>
         </div>
         <div className="letter">
-            <div className="letter-head">
-                <h2>Submit <span>Review</span></h2>
-            </div>
-            <form method="POST" action="./backend/user/reviewP">
-                <div className="letter-input">
-
-                    <div>
-                        <input type="text" name="review" placeholder="Rate Us" required></input>
-                    </div>
-                    <button type="submit" className="red_btn">Submit</button>
-
+                <div className="letter-head">
+                    <h2>Submit <span>Review</span></h2>
                 </div>
-            </form>
-        </div>
+                <form onSubmit={sendData}>
+                    <div className="letter-input">
+                        <div>
+                            <input
+                                type="text"
+                                name="review"
+                                placeholder="Rate Us"
+                                value={review}
+                                required
+                                onChange={(e) => setReview(e.target.value)}
+                            />
+                        </div>
+                        <button type="submit" className="red_btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        
+           
+            {reviews.map((reviews) => {
+              return (
+                <>
+                  <div class="reviews">
+                    <p>Review: {reviews.review}<br/> user: {reviews.userName}<br/></p>
+                  </div>
+                </>
+              );
+            })}
+            
         </div>
       
     </div>
-    
     </div>
+    
+    
   )
 }

@@ -55,8 +55,12 @@ const verifyUser = (req, res, next) =>{
         return res.json("The token was not availble")
     }else{
         jwt.verify(token,"jwt167486",(err,decoded) =>{
-            if(err) return res.json("token wrong")
-            next();
+            if (err) {
+                return res.status(401).json({ message: "Unauthorized: Invalid token" });
+            } else {
+                req.user = decoded;
+                next();
+            }
         })
     }
 }
@@ -65,12 +69,24 @@ router.route('/token').get(verifyUser, (req, res) => {
 
     return res.json("Success")
 
+
 })
 
 router.route('/logout').get((req,res)=>{
     res.clearCookie('token')
     return res.json("logout")
 })
+
+
+
+
+
+
+
+
+
+
+
 
 router.route("/display").get((req,res) =>{
     User.find().then((users)=>{
