@@ -50,7 +50,7 @@ export default function FoodMenu() {
           </div>
           <div className="section">
             <h2>Biscuits</h2>
-            <Link to="/biscutes">
+            <Link to="/biscuits">
               <img src="../../img/biskcuit.jpeg" alt="Biscuits" />
             </Link>
           </div>

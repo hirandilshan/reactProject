@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-import './reservation.css'
+import React,{useState} from 'react';
+import './reservation.css';
 
 
 import axios from "axios";

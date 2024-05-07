@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { Link } from "react-router-dom";
 import './index.css';
 
@@ -15,16 +15,26 @@ export default function Index() {
 
 
     useEffect(() => {
+        
         const token = localStorage.getItem('token');
+        console.log(token)
         if (token) {
             try {
-                const decoded = jwt_decode(token);
-                setUserName(decoded.email); // Assuming the decoded token contains an email field
+                const decoded = jwtDecode(token); // Decoding the JWT
+                console.log(decoded); // Debug: Log the decoded token to verify its contents
+                if (decoded.email) { // Check if the decoded token has an email field
+                    setUserName(decoded.email); // Set userName to the email from the token
+                } else {
+                    console.error("JWT does not contain email:");
+                }
             } catch (error) {
                 console.error("JWT decoding error:", error);
             }
+        } else {
+            console.log("No token found in localStorage");
         }
-    }, []);
+      }, []);
+      
 
 
     
@@ -32,12 +42,12 @@ export default function Index() {
     const sendData = (e) => {
         e.preventDefault();
         
-        if (!review || !userName) {
-            alert("Missing review or user information.");
+        if (!review) {
+            alert("Missing review");
             return;
         }
-
-        const newReview = { userName, review };
+        
+            const newReview = { userName, review };
 
         axios.post("http://localhost:8070/review/addReview", newReview)
             .then(() => {
@@ -48,6 +58,7 @@ export default function Index() {
                 console.error("Error submitting review:", error);
                 alert("Failed to submit review: " + error.message);
             });
+        
     };
 
     const [reviews, setReviews] = useState([]);
@@ -64,9 +75,9 @@ export default function Index() {
     }, []);
 
   return (
-    <div>
+    
         
-      <div>
+      
       <div className="home">
         <div className="main_slide">
             <div>
@@ -213,6 +224,10 @@ export default function Index() {
                 <img src="images/chef.jpg" alt="chef"></img>
             </div>
         </div>
+
+        
+  <p>Logged in user: {userName}</p>
+
         <div className="letter">
                 <div className="letter-head">
                     <h2>Submit <span>Review</span></h2>
@@ -247,8 +262,8 @@ export default function Index() {
             
         </div>
       
-    </div>
-    </div>
+    
+    
     
     
   )

@@ -8,15 +8,25 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./styleNav.css";
 import axios from 'axios';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+
+
+
 function NavigationBar() {
+  
+
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios.get("http://localhost:8070/user/token")
       .then(result => {
         if (result.data === "Success") {
+          alert("tokenSuccess")
           setIsLoggedIn(true);
         } else {
+          alert("tokenNOTSuccess")
           setIsLoggedIn(false);
         }
       });
@@ -70,6 +80,7 @@ function NavigationBar() {
               <Button variant="outline-success" href="/login">LogIn</Button>
             )}
           </Form>
+          <Nav.Link className="cart" href="/foodCart"><FontAwesomeIcon icon={faCartShopping} /></Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

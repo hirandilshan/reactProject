@@ -3,28 +3,30 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer';
 import NavigationBar from './components/NavigationBar';
-import Index from './pages/home/Index';
-import Offers from './pages/offers/Offers';
-import About from './pages/about/About';
-import Facility from './pages/facilities/Facility';
-import Gallery from './pages/gallery/Gallery';
-import ServiceType from './pages/serviceType/ServiceType';
-import Reservation from './pages/reservation/Reservation';
-import FoodMenu from './pages/foodMenu/FoodMenu';
-import Signup from './pages/signup/Signup';
-import Login from './pages/login/Login';
-import Burgers from './pages/foodMenu/foodItems/Burgers';
-import Nuggets from './pages/foodMenu/foodItems/Nuggets';
-import Salads from './pages/foodMenu/foodItems/Salads';
-import Muffins from './pages/foodMenu/foodItems/Muffins';
-import Frosty from './pages/foodMenu/foodItems/Frosty';
-import Fries from './pages/foodMenu/foodItems/Fries';
-import Drinks from './pages/foodMenu/foodItems/Drinks';
-import Coffee from './pages/foodMenu/foodItems/Coffee';
-import Biscuits from './pages/foodMenu/foodItems/Biscuits';
-import Pizza from './pages/foodMenu/foodItems/Pizza';
-import Sides from './pages/foodMenu/foodItems/Sides';
-import Deals from './pages/foodMenu/foodItems/Deals';
+import Index from './pages/user/home/Index';
+import Offers from './pages/user/offers/Offers';
+import About from './pages/user/about/About';
+import Facility from './pages/user/facilities/Facility';
+import Gallery from './pages/user/gallery/Gallery';
+import ServiceType from './pages/user/serviceType/ServiceType';
+import Reservation from './pages/user/reservation/Reservation';
+import FoodMenu from './pages/user/foodMenu/FoodMenu';
+import Signup from './pages/user/signup/Signup';
+import Login from './pages/user/login/Login';
+
+import Burgers from './pages/user/foodMenu/foodItems/Burgers';
+import Nuggets from './pages/user/foodMenu/foodItems/Nuggets';
+import Salads from './pages/user/foodMenu/foodItems/Salads';
+import Muffins from './pages/user/foodMenu/foodItems/Muffins';
+import Frosty from './pages/user/foodMenu/foodItems/Frosty';
+import Fries from './pages/user/foodMenu/foodItems/Fries';
+import Drinks from './pages/user/foodMenu/foodItems/Drinks';
+import Coffee from './pages/user/foodMenu/foodItems/Coffee';
+import Biscuits from './pages/user/foodMenu/foodItems/Biscuits';
+import Pizza from './pages/user/foodMenu/foodItems/Pizza';
+import Sides from './pages/user/foodMenu/foodItems/Sides';
+import Deals from './pages/user/foodMenu/foodItems/Deals';
+import FoodCart from './pages/user/cart/FoodCart';
 
 
 
@@ -44,6 +46,7 @@ function App() {
           <Route path='/foodMenu' element={<FoodMenu/>} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/foodCart' element={<FoodCart/>} />
 
           <Route path='/burgers' element={<Burgers />} />
           <Route path='/nuggets' element={<Nuggets />} />

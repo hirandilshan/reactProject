@@ -4,7 +4,26 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function Burgers() {
+export default function Biscuits() {
+
+
+  function sendData(foods) {
+    const newItem = {
+      foodItem: foods.item,
+      foodPrice: foods.price
+    };
+  
+    axios.post("http://localhost:8070/cart/add", newItem)
+      .then(() => {
+        alert("Added to the cart");
+        
+      })
+      .catch((err) => {
+        alert("Failed to add to cart: " + err.message);
+      });
+  }
+  
+
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
@@ -88,9 +107,8 @@ export default function Burgers() {
                     <img src={foods.img} alt="Food 1" />
                     <h3> {foods.item}</h3>
                     <h4>Rs.{foods.price}</h4>
-                    <button type="submit" name="addToCart">
-                      Add to Cart
-                    </button>
+                    <button onClick={() => sendData(foods)}>Add to Cart</button>
+                    
                   </div>
                 </>
               );

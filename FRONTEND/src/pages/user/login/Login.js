@@ -20,16 +20,26 @@ export default function Login() {
             email,
             password
         }
-        axios.post("http://localhost:8070/user/checkLogin",checkUser).then(result=>{
-            console.log(result)
-            if(result.data ==="Success"){
-                navigate('/')
-                window.location.reload();
-            }
-        }).catch((err)=>{
-            alert("Username or Password incorrect")
-        })
+        axios.post("http://localhost:8070/user/checkLogin", checkUser, { withCredentials: true })
+            .then(result => {
+                console.log(result);
+                if (result.data.message === "Success") {
+                    // Assume token is received in result.data.token if back-end is adjusted to send token
+                    const token = result.data.token;
+                    localStorage.setItem('token', token); 
+                    navigate('/'); // Navigate to the home page or dashboard
+                    window.location.reload();
+                } else {
+                    alert(result.data.message || "Authentication failed");
+                }
+            })
+            .catch((err) => {
+                console.error("Login error:", err);
+                alert(err.response?.data?.message || "Username or Password incorrect");
+            });
     }
+        
+    
   return (
     <div>
         

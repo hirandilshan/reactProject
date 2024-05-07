@@ -31,8 +31,10 @@ router.route("/checkLogin").post((req,res)=>{
         if(user){
             if(user.password=== password){
                 const token= jwt.sign({email: user.email},"jwt167486",{expiresIn: "1d"})
-                res.cookie("token",token, { httpOnly: true })
-                res.json("Success")
+                res.cookie("token", token, { httpOnly: true, sameSite: 'Strict' });
+                res.json({ message: "Success", token })
+                
+                
             
             }else{
                 res.status(401).json({ message: "Password is incorrect" });
@@ -113,26 +115,7 @@ router.route("/update/:id").put(async(req,res)=>{
     
 }) 
 
-router.route("/delete/:id").delete(async(req,res)=>{
-    let userId=req.params.id;
-    await User.findByIdAndDelete(userId).then(()=>{
-        res.status(200).send({status:"User deleted"})
-    }).catch((err)=>{
-        console.log(err.massage);
-        res.status(500).send({status:"Error with delete user",error:err.massage});
-    })  
-})
 
-router.route("/get/:id").get(async(req,res)=>{
-    let userId=req.params.id;
-     const user= await User.findById(userId).then((user)=>{
-        res.status(200).send({status:"user fetched",user})
-    }).catch((err)=>{
-        console.log(err.massage);
-        res.status(500).send({status:"Error with delete user",error:err.massage});
-    
-    })
-})
 
 
 

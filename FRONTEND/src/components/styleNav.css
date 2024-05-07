@@ -27,3 +27,7 @@
 .login:hover {
     color: blue !important;
 }
+
+.cart{
+    padding: 15px;
+}
