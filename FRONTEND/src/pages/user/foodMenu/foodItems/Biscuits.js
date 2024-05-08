@@ -3,14 +3,43 @@ import "./food.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { jwtDecode } from 'jwt-decode';
 
 export default function Biscuits() {
 
+  const [userName, setUserName] = useState("");
 
-  function sendData(foods) {
+
+    useEffect(() => {
+        
+        const token = localStorage.getItem('token');
+        console.log(token)
+        if (token) {
+            try {
+                const decoded = jwtDecode(token); // Decoding the JWT
+                console.log(decoded); // Debug: Log the decoded token to verify its contents
+                if (decoded.email) { // Check if the decoded token has an email field
+                    setUserName(decoded.email); // Set userName to the email from the token
+                } else {
+                    console.error("JWT does not contain email:");
+                }
+            } catch (error) {
+                console.error("JWT decoding error:", error);
+            }
+        } else {
+            console.log("No token found in localStorage");
+        }
+      }, []);
+
+
+  function sendData(foodId) {
+    const foodItem = foods.find(foods => foods._id === foodId);
+    const num=1;
     const newItem = {
-      foodItem: foods.item,
-      foodPrice: foods.price
+          item: foodItem.item,
+          price: foodItem.price,
+          numOfItems: num,
+          userName: userName
     };
   
     axios.post("http://localhost:8070/cart/add", newItem)
@@ -107,7 +136,7 @@ export default function Biscuits() {
                     <img src={foods.img} alt="Food 1" />
                     <h3> {foods.item}</h3>
                     <h4>Rs.{foods.price}</h4>
-                    <button onClick={() => sendData(foods)}>Add to Cart</button>
+                    <button onClick={() => sendData(foods._id)}>Add to Cart</button>
                     
                   </div>
                 </>

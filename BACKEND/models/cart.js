@@ -1,7 +1,7 @@
 const mongoose= require("mongoose");
 
 const Schema= mongoose.Schema;
-const itemsSchema =new Schema({
+const itemSchema =new Schema({
 
     item: {
         type: String,
@@ -16,10 +16,17 @@ const itemsSchema =new Schema({
     numOfItems: {
         type: Number,
         required:true
+    },
+
+    userName: {
+        type: String,
+        required: true
     }
 
 })
 
 
-const items= mongoose.model("items",itemsSchema);
-module.exports=items;
+
+
+const cart= mongoose.model("carts",itemSchema);
+module.exports=cart;

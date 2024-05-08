@@ -14,11 +14,13 @@ const PORT =process.env.PORT || 8070;
 
 app.use(cors({
     origin: ["http://localhost:3000"],
-    methods:["GET","POST"],
+    methods:["GET","POST", "PUT", "DELETE"],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
 app.use(bodyParser.json());
 app.use(cookieParsar())
+
 
 const URL=process.env.MONGODB_URL;
 
@@ -48,6 +50,9 @@ app.use("/foods",foodsRouter);
 
 const reviewRouter = require("./routes/reviews.js");
 app.use("/review",reviewRouter);
+
+const cartRouter = require("./routes/carts.js");
+app.use("/cart",cartRouter);
 
 app.listen(PORT,() =>{
     console.log(`Server is up and running on port ${PORT}`);

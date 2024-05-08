@@ -23,10 +23,8 @@ function NavigationBar() {
     axios.get("http://localhost:8070/user/token")
       .then(result => {
         if (result.data === "Success") {
-          alert("tokenSuccess")
           setIsLoggedIn(true);
         } else {
-          alert("tokenNOTSuccess")
           setIsLoggedIn(false);
         }
       });

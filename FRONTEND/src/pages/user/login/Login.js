@@ -61,7 +61,7 @@ export default function Login() {
                         <label>password</label>
                     </div>
 
-                    <button type="submit" name="submit">Sign Up</button>
+                    <button type="submit" name="submit">Login</button>
                 </form>
                 <div className="link">
                     Don't have an account?
