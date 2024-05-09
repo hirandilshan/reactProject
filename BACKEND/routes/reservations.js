@@ -3,15 +3,13 @@ let Reservation=require("../models/reservation");
 
 
 router.route("/book").post((req,res)=>{
-    
-    const date =req.body.date;
-    const time =req.body.time;
-    const tableNum =req.body.tableNum;
+    const { date, time, tableNum, userName } = req.body;
 
     const newReservation =new Reservation({
         date,
         time,
-        tableNum
+        tableNum,
+        userName
     })
     newReservation.save().then(()=>{
         res.json("Booking Sucessful")
@@ -19,4 +17,11 @@ router.route("/book").post((req,res)=>{
         console.log(err);
     })
 })
+
+router.route("/getReservations").get((req,res)=>{
+    Reservation.find()
+    .then((reservations) =>res.json(reservations))
+    .catch((err) =>res.json(err))
+})
+
 module.exports= router;

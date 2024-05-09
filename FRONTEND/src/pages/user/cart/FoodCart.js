@@ -3,6 +3,7 @@ import "./cart.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from 'jwt-decode';
+import Table from 'react-bootstrap/Table';
 
 export default function FoodCart() {
   const [userName, setUserName] = useState("");
@@ -49,12 +50,6 @@ export default function FoodCart() {
 
     function removeItem(itemId) {
       const cartItems = items.find(items => items._id === itemId);
-        const newItem = {
-            item: cartItems.item,
-            price: cartItems.price,
-            numOfItems: cartItems.numOfItems,
-            userName: userName
-        };
       
         axios.delete(`http://localhost:8070/cart/remove/${cartItems._id}`)
           .then(() => {
@@ -117,16 +112,19 @@ export default function FoodCart() {
     <div>
       <div class="content">
         <div class="cart-container">
-          <table>
-            <tr>
+        <Table striped="columns">
+      <thead>
+        <tr>
               <th>Item</th>
               <th>Price</th>
               <th>(-)</th>
               <th>Number of Items</th>
               <th>(+)</th>
               <th>Remove</th>
-            </tr>
-            
+              </tr>
+      </thead>
+      <tbody>
+        
             {items.map((items) => {
               return (
                 <>
@@ -147,7 +145,9 @@ export default function FoodCart() {
                 </>
               );
             })}
-          </table>
+           
+      </tbody>
+    </Table>
           <h2>Your Cart</h2>
           <div class="cart-items"></div>
           <div class="total">

@@ -5,7 +5,7 @@ const resSchema =new Schema({
     
 
     date: {
-        type: String,
+        type: Date,
         required: true
     },
 
@@ -15,9 +15,13 @@ const resSchema =new Schema({
     },
 
     tableNum: {
-        type: Number,
+        type: String,
         required:true
     },
+    userName: {
+        type: String,
+        required: true
+    }
 
 })
 

@@ -3,6 +3,8 @@ import axios from "axios";
 import { jwtDecode } from 'jwt-decode';
 import { Link } from "react-router-dom";
 import './index.css';
+import Carousel from 'react-bootstrap/Carousel';
+
 
 
 
@@ -79,8 +81,39 @@ export default function Index() {
         
       
       <div className="home">
+        <Carousel>
+      <Carousel.Item>
+        <img src="images/1.jpg" alt="burger" text="First slide" />
+        <Carousel.Caption>
+        <h2 style={{ fontWeight: 'bold' }}>WELCOME TO</h2>
+
+
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img src="images/2.jpg" alt="burger" text="secound slide" />
+        <Carousel.Caption>
+        <h2 style={{ fontWeight: 'bold' }}>EAT OUT</h2>
+          
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img src="images/3.jpg" alt="burger" text="third slide" />
+        <Carousel.Caption>
+        <h2 style={{ fontWeight: 'bold',color: 'rgb(245, 101, 34)' }}>ENJOY YOUR MEALS</h2>
+        
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+
         <div className="main_slide">
             <div>
+            
 
                 
                 <h1>Enjoy <span>Delicious Food</span> is Your Healthy Life.</h1>

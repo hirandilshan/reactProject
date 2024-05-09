@@ -27,6 +27,7 @@ import Pizza from './pages/user/foodMenu/foodItems/Pizza';
 import Sides from './pages/user/foodMenu/foodItems/Sides';
 import Deals from './pages/user/foodMenu/foodItems/Deals';
 import FoodCart from './pages/user/cart/FoodCart';
+import Search from './pages/user/search/Search';
 
 
 
@@ -60,6 +61,7 @@ function App() {
           <Route path='/pizza' element={<Pizza />} />
           <Route path='/sides' element={<Sides />} />
           <Route path='/deals' element={<Deals />} />
+          <Route path='/search' element={<Search />} />
         </Routes>
         <Footer/>
       </div>

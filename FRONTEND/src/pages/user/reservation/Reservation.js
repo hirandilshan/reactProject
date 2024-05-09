@@ -1,110 +1,179 @@
-import React,{useState} from 'react';
-import './reservation.css';
-
-
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import "./reservation.css";
+import Form from "react-bootstrap/Form";
+import Table from 'react-bootstrap/Table';
 
 export default function Reservation() {
-    const [date, setDate]=useState("");
-    const [time, setTime]=useState("");
-    const [tableNum, setTableNum]=useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [tableNum, setTableNum] = useState("");
+  const [userName, setUserName] = useState("");
+  const [reservations, setReservations] = useState([]);
 
-    function resData(e){
-        e.preventDefault();
-        
-        const newReservation ={
-            date,
-            time,
-            tableNum
+  useEffect(() => {
+    axios
+      .get("http://localhost:8070/reservation/getReservations")
+      .then((response) => {
+        const filteredReservations = response.data.filter(
+          (reservations) => reservations.userName === userName
+        );
+        setReservations(filteredReservations);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userName]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if (token) {
+      try {
+        const decoded = jwtDecode(token); // Decoding the JWT
+        console.log(decoded); // Debug: Log the decoded token to verify its contents
+        if (decoded.email) {
+          // Check if the decoded token has an email field
+          setUserName(decoded.email); // Set userName to the email from the token
+        } else {
+          console.error("JWT does not contain email:");
         }
-        axios.post("http://localhost:8070/reservation/book",newReservation).then(()=>{
-            alert("reservation successful");
-        }).catch((err)=>{
-            alert(err)
-        })
+      } catch (error) {
+        console.error("JWT decoding error:", error);
+      }
+    } else {
+      console.log("No token found in localStorage");
     }
+  }, []);
+
+  function resData(e) {
+    e.preventDefault();
+
+    const newReservation = {
+      date,
+      time,
+      tableNum,
+      userName,
+    };
+    const isAlreadyBooked = reservations.some(res => 
+      res.date === date && res.time === time && res.tableNum === tableNum);
+
+  if (isAlreadyBooked) {
+      alert("This table is already booked for the selected date and time.");
+      return; 
+  }
+
+  axios
+      .post("http://localhost:8070/reservation/book", newReservation)
+      .then(() => {
+          alert("Reservation successful");
+          setReservations([...reservations, newReservation]); 
+      })
+      .catch((err) => {
+          alert(err.response.data.message || "Error booking reservation");
+      });
+}
+  
   return (
     <div>
-      
       <div className="content">
         <div className="forms">
+          <div className="form-details">
+            <h2>Make Reservations</h2>
+          </div>
+          <div className="form-content">
+            <form onSubmit={resData}>
+              <div className="inputs">
+                <label>Date:</label>
+                <input
+                  type="date"
+                  name="date"
+                  required
+                  onChange={(e) => {
+                    setDate(e.target.value);
+                  }}
+                />
+                <br />
+              </div>
+              <div className="inputs">
+                <label>Time:</label>
+                <Form.Select
+                  aria-label="Default select example"
+                  onChange={(e) => {
+                    setTime(e.target.value);
+                  }}
+                >
+                  <option>Open this select menu</option>
+                  <option value="09:00:00">9 - 10</option>
+                  <option value="10:00:00">10 - 11</option>
+                  <option value="11:00:00">11 - 12</option>
+                  <option value="12:00:00">12 - 1</option>
+                  <option value="13:00:00">1 - 2</option>
+                  <option value="14:00:00">2 - 3</option>
+                  <option value="11:00:00">3 - 4</option>
+                  <option value="11:00:00">4 - 5</option>
+                </Form.Select>
+              </div>
 
+              <div className="inputs">
+                <label for="tables">Table Number:</label>
+                <Form.Select
+                  aria-label="Default select example"
+                  onChange={(e) => {
+                    setTableNum(e.target.value);
+                  }}
+                >
+                  <option>Open this select menu</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </Form.Select>
+                <br />
+              </div>
+              <button type="submit" value="Submit">
+                Book Now
+              </button>
+            </form>
+            </div>
             <div className="form-details">
-                <h2>Make Reservations</h2>
-                <p>Fill the date and time for the reservation.</p>
-            </div>
-            <div className="form-content">
-                <form onSubmit={resData}>
-                    <label>Date:</label>
-                    <div className="inputs">
-
-                        <input type="date" name="date" required onChange={(e)=>{setDate(e.target.value)}}/><br/>
-                    </div>
-                    <label>Time:</label>
-                    <div className="inputs">
-
-                        <input type="radio" id="time1" name="time" value="09:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time1">9 - 10</label><br/>
-                    </div>
-                    <div className="inputs">
-                        <input type="radio" id="time2" name="time" value="10:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time2">10 - 11</label><br/>
-                    </div>
-                    <div className="inputs">
-                        <input type="radio" id="time3" name="time" value="11:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time3">11 - 12</label><br/>
-                    </div>
-                    <div className="inputs">
-                        <input type="radio" id="time1" name="time" value="12:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time1">12 - 1</label><br/>
-                    </div>
-                    <div className="inputs">
-                        <input type="radio" id="time2" name="time" value="13:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time2">1 - 2</label><br/>
-                    </div>
-                    <div className="inputs">
-                        <input type="radio" id="time3" name="time" value="14:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time3">2 - 3</label><br/>
-                    </div>
-                    <div className="inputs">
-                        <input type="radio" id="time1" name="time" value="15:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time1">3 - 4</label><br/>
-                    </div>
-                    <div className="inputs">
-                        <input type="radio" id="time2" name="time" value="16:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time2">4 - 5</label><br/>
-                    </div>
-                    <div className="inputs">
-                        <input type="radio" id="time3" name="time" value="17:00:00" onChange={(e)=>{setTime(e.target.value)}}/>
-                        <label for="time3">5 - 6</label><br/><br/>
-                    </div>
-                    <div className="inputs">
-                        <label for="tables">Table Number:</label>
-                        <select id="tables" name="tables" onChange={(e)=>{setTableNum(e.target.value)}}>
-                            <option value="001">001</option>
-                            <option value="002">002</option>
-                            <option value="003">003</option>
-                            <option value="004">004</option>
-                            <option value="005">005</option>
-                            <option value="006">006</option>
-                            <option value="007">007</option>
-                            <option value="008">008</option>
-                            <option value="009">009</option>
-                            <option value="010">010</option>
-                            <option value="011">011</option>
-                            <option value="012">012</option>
-                        </select> <br/>
-                    </div>
-                    <button type="submit" value="Submit">Book Now</button>
-                </form>
-
-            </div>
-
-
-
+            <h2>Previous Reservations</h2>
+          </div>
+          <Table striped="columns">
+      <thead>
+        <tr>
+          <th>Reservation Date</th>
+          <th>Time</th>
+          <th>Table Number</th>
+        </tr>
+      </thead>
+      <tbody>
+      {reservations.map((reservations) => {
+              return (
+                <>
+                  <tr>
+                    <td>{reservations.date}</td>
+                    <td>{reservations.time}</td>
+                    <td>{reservations.tableNum}</td>
+                    
+                  </tr>
+                </>
+              );
+            })}
+      </tbody>
+    </Table>
+          
         </div>
+      </div>
     </div>
-      
-    </div>
-  )
+  );
 }

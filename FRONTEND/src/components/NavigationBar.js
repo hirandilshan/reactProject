@@ -7,14 +7,40 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./styleNav.css";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 
 
+
 function NavigationBar() {
+  const navigate = useNavigate();
+  const[input,setInput]=useState("");
+  const[results,setResults] = useState([]);
+
+
   
+
+  const fetchData = (value) =>{
+    axios
+    .get("http://localhost:8070/foods/getFoods").then(res => {
+      
+      const result = res.data.filter((food) => {
+        return value && food && food.item && food.item.toLowerCase().includes(value.toLowerCase());
+      });
+      
+      setResults(result);
+    })
+  }
+
+  const handleChange =async(value) =>{
+    setInput(value)
+    fetchData(value)
+  }
 
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,6 +63,11 @@ function NavigationBar() {
           setIsLoggedIn(false);
         }
       });
+  };
+  const handleSearch = (event) => {
+    event.preventDefault(); // Prevent the default form submit action
+    fetchData(input); // Perform the search
+    navigate("/search", { state: { results } }); // Navigate after results are fetched and updated
   };
 
   return (
@@ -62,14 +93,15 @@ function NavigationBar() {
               
             </NavDropdown>
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={handleSearch}>
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={input} onChange={(e) => handleChange(e.target.value)}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" type='submit' >Search</Button>
           </Form>
           <Form className="login">
             {isLoggedIn ? (

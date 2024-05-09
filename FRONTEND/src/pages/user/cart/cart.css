@@ -1,10 +1,17 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh; /* Make sure html and body cover full viewport height */
+    background-color: rgb(219, 227, 253); /* Set the background color here to cover full height */
 }
 
 .content {
-    background-color: rgb(219, 227, 253);
+    background-color: inherit;
     padding: 0 7vw;
 }
 
@@ -67,7 +74,15 @@ div.cart-container .cart-item .item-details p {
 }
 
 .cart-container button {
-    padding: 15px 30px;
+    padding: 5px 10px;
     font-size: 18px;
-    color: #968f8f;
+    background-color: #fd0d0d80;
+    border-radius: 8px;
+}
+
+.cart-container button:hover {
+    background-color: white;
+    box-shadow: 0 2px 15px red;
+    border: 1px solid red;
+    color: red;
 }
