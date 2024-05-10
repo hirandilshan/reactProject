@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 export default function Biscuits() {
 
   const [userName, setUserName] = useState("");
+  const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -33,6 +35,7 @@ export default function Biscuits() {
 
 
   function sendData(foodId) {
+    if(userName){
     const foodItem = foods.find(foods => foods._id === foodId);
     const num=1;
     const newItem = {
@@ -50,7 +53,11 @@ export default function Biscuits() {
       .catch((err) => {
         alert("Failed to add to cart: " + err.message);
       });
+  }else{
+    alert("Please Login")
+    navigate('/login');
   }
+}
   
 
   const [foods, setFoods] = useState([]);

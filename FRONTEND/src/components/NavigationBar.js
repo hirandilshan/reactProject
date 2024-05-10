@@ -17,29 +17,16 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 
 
+
 function NavigationBar() {
   const navigate = useNavigate();
   const[input,setInput]=useState("");
-  const[results,setResults] = useState([]);
 
 
   
 
-  const fetchData = (value) =>{
-    axios
-    .get("http://localhost:8070/foods/getFoods").then(res => {
-      
-      const result = res.data.filter((food) => {
-        return value && food && food.item && food.item.toLowerCase().includes(value.toLowerCase());
-      });
-      
-      setResults(result);
-    })
-  }
-
   const handleChange =async(value) =>{
     setInput(value)
-    fetchData(value)
   }
 
 
@@ -65,10 +52,10 @@ function NavigationBar() {
       });
   };
   const handleSearch = (event) => {
-    event.preventDefault(); // Prevent the default form submit action
-    fetchData(input); // Perform the search
-    navigate("/search", { state: { results } }); // Navigate after results are fetched and updated
+    event.preventDefault();
+    navigate('/search', { state: { searchName: input } });
   };
+  
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -110,7 +97,11 @@ function NavigationBar() {
               <Button variant="outline-success" href="/login">LogIn</Button>
             )}
           </Form>
+          {isLoggedIn ? (
           <Nav.Link className="cart" href="/foodCart"><FontAwesomeIcon icon={faCartShopping} /></Nav.Link>
+        ) : (
+          <div></div>
+        )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
