@@ -54,7 +54,7 @@ export default function Index() {
         
             const newReview = { userName, review };
 
-        axios.post("https://reactproject-6y6b.onrender.com/review/addReview", newReview)
+        axios.post("http://localhost:8070/review/addReview", newReview)
             .then(() => {
                 alert("Review submitted");
                 setReview(""); // Clear the review state
@@ -70,7 +70,7 @@ export default function Index() {
 
     useEffect(() => {
       axios
-        .get("https://reactproject-6y6b.onrender.com/review/display")
+        .get("http://localhost:8070/review/display")
         .then((response) => {
             setReviews(response.data);
         })
