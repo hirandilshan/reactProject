@@ -56,7 +56,7 @@ body {
 .menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 15px;
     justify-items: center;
     padding: 110px;
 }
@@ -71,18 +71,24 @@ body {
 }
 
 .menu .section h2 {
-    padding: 15px;
+    padding-left: 0px;
     font-weight: bold;
     text-align: center;
 
 }
 
-.menu .section a img {
+.menu .section button{
+    background: none;
+    border: 0ch;
+}
+
+.menu .section img {
     padding: 22px;
+
     border-radius: 100%;
     transition: transform 0.3s ease ;
 }
 
-.menu .section a img:hover {
+.menu .section img:hover {
     transform: scale(1.1);
 }

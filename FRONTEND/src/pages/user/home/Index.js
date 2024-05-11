@@ -4,6 +4,9 @@ import { jwtDecode } from 'jwt-decode';
 import { Link } from "react-router-dom";
 import './index.css';
 import Carousel from 'react-bootstrap/Carousel';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
+
 
 
 
@@ -126,38 +129,52 @@ export default function Index() {
                 <img src="images/burger.jpg" alt="burger"></img>
             </div>
         </div>
-        <div className="food-items">
-            <div className="item">
-                <div>
-                    <img src="images/burger.jpg" alt="food item"></img>
-                </div>
-                <h3>Burger</h3>
-                <p>chicken burgur with spicy chicken and potato chips </p>
-                <Link to="/foodMenu">
+
+        <CardGroup>
+      <Card>
+        <Card.Img variant="top" src="images/burger.jpg" />
+        <Card.Body>
+          <Card.Title>Burger</Card.Title>
+          <Card.Text>
+          chicken burgur with spicy chicken and potato chips
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted"><Link to="/foodMenu">
                     <button type="submit" className="red_btn">See Menu</button>
-                </Link>
-            </div>
-            <div className="item">
-                <div>
-                    <img src="images/cheese-kottu.png" alt="food item"></img>
-                </div>
-                <h3>Cheese Koththu</h3>
-                <p>Using curd instead of cheese, this kottu has a tart kick that's also fatty and milky in a way that works with spices at play</p>
-                <Link to="/foodMenu">
+                </Link></small>
+        </Card.Footer>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="images/cheese-kottu.png" />
+        <Card.Body>
+          <Card.Title>Cheese Koththu</Card.Title>
+          <Card.Text>
+          Using curd instead of cheese, this kottu has a tart kick that's also fatty and milky in a way that works with spices at play
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted"><Link to="/foodMenu">
                     <button type="submit" className="red_btn">See Menu</button>
-                </Link>
-            </div>
-            <div className="item">
-                <div>
-                    <img src="images/biriyani.jpg" alt="food item"></img>
-                </div>
-                <h3>Biriyani</h3>
-                <p>Biryani, flavourful rice dish of Persian origin that has become a popular celebratory dish in South Asia</p>
-                <Link to="/foodMenu">
+                </Link></small>
+        </Card.Footer>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="images/biriyani.jpg" />
+        <Card.Body>
+          <Card.Title>Biriyani</Card.Title>
+          <Card.Text>
+          Biryani, flavourful rice dish of Persian origin that has become a popular celebratory dish in South Asia
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted"><Link to="/foodMenu">
                     <button type="submit" className="red_btn">See Menu</button>
-                </Link>
-            </div>
-        </div>
+                </Link></small>
+        </Card.Footer>
+      </Card>
+    </CardGroup>
+        
         <div className="main_slide2">
             <div className="foodimg">
                 <img src="images/chicken devel.jpg" alt=""></img>
@@ -259,7 +276,7 @@ export default function Index() {
         </div>
 
         
-  <p>Logged in user: {userName}</p>
+
 
         <div className="letter">
                 <div className="letter-head">
@@ -286,8 +303,9 @@ export default function Index() {
             {reviews.map((reviews) => {
               return (
                 <>
+                
                   <div class="reviews">
-                    <p>Review: {reviews.review}<br/> user: {reviews.userName}<br/></p>
+                  <p>Review: {reviews.review}<br/> user: {reviews.userName}<br/></p>
                   </div>
                 </>
               );

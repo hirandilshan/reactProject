@@ -5,11 +5,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function Biscuits() {
+  const location = useLocation();
+  const submitedFoodType = location.state?.submitedFoodType;
 
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("searchName received:", submitedFoodType);
+    if (submitedFoodType) {
+      
+    }else{
+      navigate('/foodMenu');
+    }
+  }, [submitedFoodType,navigate]);
 
 
     useEffect(() => {
@@ -32,6 +44,11 @@ export default function Biscuits() {
             console.log("No token found in localStorage");
         }
       }, []);
+
+      const handleNavigate = (foodType) => {
+        
+        navigate(`/foodItems`, { state: { submitedFoodType: foodType } });
+      };
 
 
   function sendData(foodId) {
@@ -67,74 +84,47 @@ export default function Biscuits() {
       .get("http://localhost:8070/foods/getFoods")
       .then((response) => {
         const filteredFoods = response.data.filter(
-          (foods) => foods.foodType === "Biscutes"
+          (foods) => foods.foodType === submitedFoodType
         );
         setFoods(filteredFoods);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [submitedFoodType]);
 
   return (
     <div>
       <div className="item-menu">
         <div className="list">
-          <Link to="/foodMenu">Back to Menu</Link>
-
-          <div className="section2">
-            <img src="../../../img/buger.jpeg" alt="option1" />
-            <Link to="/burgers">Burgers</Link>
+        <div className="section2"><Link to="/foodMenu">Back to Menu</Link></div>
+        
+        {[
+          { type: 'Burgers', label: 'Burgers', imgSrc: '../../img/buger.jpeg' },
+          { type: 'Nuggets', label: 'Nuggets', imgSrc: '../../img/nugget.jpeg' },
+          { type: 'Salads', label: 'Salads', imgSrc: '../../img/salads.jpeg' },
+          { type: 'Fries', label: 'Fries', imgSrc: '../../img/fries.jpeg' },
+          { type: 'Muffins', label: 'Muffins', imgSrc: '../../img/muffin.jpeg' },
+          { type: 'Biscutes', label: 'Biscuits', imgSrc: '../../img/biskcuit.jpeg' },
+          { type: 'Ice', label: 'Frosty', imgSrc: '../../img/ices.jpeg' },
+          { type: 'Beverages', label: 'Drinks', imgSrc: '../../img/bev.jpeg' },
+          { type: 'Coffee', label: 'Coffee', imgSrc: '../../img/coffee1.jpeg' },
+          { type: 'Pizza', label: 'Pizza', imgSrc: '../../img/pizza.jpeg' },
+          { type: 'Sides', label: 'Sides & more', imgSrc: '../../img/sides.jpeg' },
+          { type: 'Deals', label: 'Meal Deals', imgSrc: '../../img/mealDeals.jpeg' }
+        ].map((item, index) => (
+            <div className="section2" key={index}>
+                <img src={item.imgSrc} alt={item.label} />
+            <button onClick={() => handleNavigate(item.type)} >
+                {item.label}
+            </button>
           </div>
-          <div className="section2">
-            <img src="../../../img/nuggets.jpeg" alt="option2" />
-            <Link to="/nuggets">Nuggets</Link>
-          </div>
-          <div className="section2">
-            <img src="../../../img/salads.jpeg" alt="option3" />
-            <Link to="/salads">Salads</Link>
-          </div>
-          <div className="section2">
-            <img src="../../../img/fries.jpeg" alt="option4" />
-            <Link to="/fries">Fries</Link>
-          </div>
-          <div className="section2">
-            <img src="../../../img/muffin.jpeg" alt="option5" />
-            <Link to="/muffins">Muffins</Link>
-          </div>
-          <div className="section2">
-            <img src="../../../img/biskcuit.jpeg" alt="option6" />
-            <Link to="/biscuits">Biscuits</Link>
-          </div>
-          <div className="section2">
-            <img src="../../../img/ices.jpeg" alt="option7" />
-            <Link to="/ice">Frosty</Link>
-          </div>
-          <div className="section2">
-            <img src="../../../img/bev.jpeg" alt="option8" />
-            <Link to="/beverage">Drinks</Link>
-          </div>
-          <div className="section2">
-            <img src="../../../img/coffee.jpeg" alt="option9" />
-            <Link to="/coffee">Coffee</Link>
-          </div>
-
-          <div className="section2">
-            <img src="../../../img/pizza.jpeg" alt="option10" />
-            <Link to="/pizza">Pizza</Link>
-          </div>
-          <div className="section2">
-            <img src="../../img/sides.jpeg" alt="option11" />
-            <Link to="/sides">Sides</Link>
-          </div>
-          <div className="section2">
-            <img src="../../img/mealDeals.jpeg" alt="option12" />
-            <Link to="/deals">Deals</Link>
-          </div>
+        ))}
+          
         </div>
 
         <div className="choice">
-          <p>Biscuits</p>
+          <p>{submitedFoodType}</p>
           <div className="foods">
             {foods.map((foods) => {
               return (

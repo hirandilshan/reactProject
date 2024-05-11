@@ -21,15 +21,27 @@
 
 }
 
-.list a {
+.list button {
     font-size: 25px;
     color: #470707;
     font-weight: bold;
+    background-color: rgb(123, 195, 243);
+    border: none;
+    
+
+}
+.list a {
+    font-size: 25px;
+    text-align: center;
+    color: #470707;
+    font-weight: bold;
+    
+    border: none;
     
 
 }
 
-.list a:hover {
+.list button:hover {
     text-decoration: underline;
 }
 
@@ -52,7 +64,7 @@
 
 .section2 a {
     font-size: 20px;
-    float: right;
+    padding: 50px;
     padding-right: 37px;
     padding-top: 20px;
     color: #470707;
