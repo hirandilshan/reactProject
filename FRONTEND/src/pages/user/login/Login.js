@@ -20,7 +20,7 @@ export default function Login() {
             email,
             password
         }
-        axios.post("https://reactproject-6y6b.onrender.com/user/checkLogin", checkUser, { withCredentials: true })
+        axios.post("http://localhost:8070/user/checkLogin", checkUser, { withCredentials: true })
             .then(result => {
                 console.log(result);
                 if (result.data.message === "Success") {

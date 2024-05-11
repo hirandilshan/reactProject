@@ -62,7 +62,7 @@ export default function Biscuits() {
           userName: userName
     };
   
-    axios.post("https://reactproject-6y6b.onrender.com/cart/add", newItem)
+    axios.post("http://localhost:8070/cart/add", newItem)
       .then(() => {
         alert("Added to the cart");
         
@@ -81,7 +81,7 @@ export default function Biscuits() {
 
   useEffect(() => {
     axios
-      .get("https://reactproject-6y6b.onrender.com/foods/getFoods")
+      .get("http://localhost:8070/foods/getFoods")
       .then((response) => {
         const filteredFoods = response.data.filter(
           (foods) => foods.foodType === submitedFoodType
