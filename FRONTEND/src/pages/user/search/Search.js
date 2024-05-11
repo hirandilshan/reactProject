@@ -48,7 +48,7 @@ export default function Search() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8070/foods/getFoods")
+      .get("https://reactproject-6y6b.onrender.com/foods/getFoods")
       .then((response) => {
         
         setFoods(response.data);
@@ -63,7 +63,7 @@ export default function Search() {
 
   const fetchData = (value) =>{
     axios
-    .get("http://localhost:8070/foods/getFoods").then(res => {
+    .get("https://reactproject-6y6b.onrender.com/foods/getFoods").then(res => {
       
       const result = res.data.filter((food) => {
         return value && food && food.item && food.item.toLowerCase().includes(value.toLowerCase());
@@ -87,7 +87,7 @@ export default function Search() {
           userName: userName
     };
   
-    axios.post("http://localhost:8070/cart/add", newItem)
+    axios.post("https://reactproject-6y6b.onrender.com/cart/add", newItem)
       .then(() => {
         alert("Added to the cart");
         

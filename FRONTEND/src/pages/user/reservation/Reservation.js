@@ -14,7 +14,7 @@ export default function Reservation() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8070/reservation/getReservations")
+      .get("https://reactproject-6y6b.onrender.com/reservation/getReservations")
       .then((response) => {
         const filteredReservations = response.data.filter(
           (reservations) => reservations.userName === userName
@@ -65,7 +65,7 @@ export default function Reservation() {
   }
 
   axios
-      .post("http://localhost:8070/reservation/book", newReservation)
+      .post("https://reactproject-6y6b.onrender.com/reservation/book", newReservation)
       .then(() => {
           alert("Reservation successful");
           setReservations([...reservations, newReservation]); 

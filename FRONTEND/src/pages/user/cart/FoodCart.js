@@ -35,7 +35,7 @@ export default function FoodCart() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8070/cart/getItems")
+      .get("https://reactproject-6y6b.onrender.com/cart/getItems")
       .then((response) => {
         const filteredItems = response.data.filter(
           (items) => items.userName === userName
@@ -51,7 +51,7 @@ export default function FoodCart() {
     function removeItem(itemId) {
       const cartItems = items.find(items => items._id === itemId);
       
-        axios.delete(`http://localhost:8070/cart/remove/${cartItems._id}`)
+        axios.delete(`https://reactproject-6y6b.onrender.com/cart/remove/${cartItems._id}`)
           .then(() => {
             alert("remove from the cart");
             setItems(currentItems => currentItems.filter(item => item._id !== itemId));
@@ -71,7 +71,7 @@ export default function FoodCart() {
           userName: userName
       };
       
-        axios.put(`http://localhost:8070/cart/increse/${cartItems._id}`, newItem)
+        axios.put(`https://reactproject-6y6b.onrender.com/cart/increse/${cartItems._id}`, newItem)
           .then(() => {
             setItems(currentItems => currentItems.map(item => {
               if (item._id === itemId) {
@@ -94,7 +94,7 @@ export default function FoodCart() {
           userName: userName
       };
       
-        axios.put(`http://localhost:8070/cart/decrese/${cartItems._id}`, newItem)
+        axios.put(`https://reactproject-6y6b.onrender.com/cart/decrese/${cartItems._id}`, newItem)
           .then(() => {
             setItems(currentItems => currentItems.map(item => {
               if (item._id === itemId) {
