@@ -18,7 +18,7 @@ export default function Signup() {
             email,
             password
         }
-        axios.post("http://localhost:8070/user/add",newUser).then(()=>{
+        axios.post("https://reactproject-6y6b.onrender.com/user/add",newUser).then(()=>{
             alert("signup successful");
             setFirstName("");
             setLastName("");

@@ -33,7 +33,7 @@ function NavigationBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get("http://localhost:8070/user/token")
+    axios.get("https://reactproject-6y6b.onrender.com/user/token")
       .then(result => {
         if (result.data === "Success") {
           setIsLoggedIn(true);
@@ -44,7 +44,7 @@ function NavigationBar() {
   }, []);
 
   const handleLogout = () => {
-    axios.get("http://localhost:8070/user/logout")
+    axios.get("https://reactproject-6y6b.onrender.com/user/logout")
       .then(result => {
         if (result.data === "logout") {
           setIsLoggedIn(false);
