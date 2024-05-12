@@ -1,15 +1,16 @@
 
 
-
+.logo{
+    font-size: 45px;
+    
+}
 
 
 .nav-link:hover {
     color: rgb(247, 246, 245);
     text-shadow: 0 2px 15px rgb(2, 2, 2);
 }
-.logo{
-    font-size: 35px;
-}
+
 .bg-body-tertiary {
     display: flex;
     flex-wrap: wrap;
