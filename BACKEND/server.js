@@ -13,7 +13,7 @@ dotenv.config();
 const PORT =process.env.PORT || 8070;
 
 app.use(cors({
-    origin: ["http://localhost:3000","https://eatoutrestuarent24.netlify.app/"],
+    origin: ["https://eatoutrestuarent24.netlify.app/"],
     methods:["GET","POST", "PUT", "DELETE"],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
