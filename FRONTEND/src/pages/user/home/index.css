@@ -12,7 +12,11 @@ body {
 
 
 .home {
-    background-color: rgb(219, 227, 253);
+    background-image: url('../../../../public/images/background6.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
     padding: 0 7vw;
     flex: 1;
 }
@@ -211,9 +215,11 @@ body {
 
 .main_slide3 .fav-food .item {
     background-color: white;
-    border-radius: 5px;
+    
     margin-bottom: 30px;
-    box-shadow: 0 2px 10px rgba(119, 199, 119, 0.438);
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+  border-radius: 10px;
+    
     width: 220px;
     padding: 15px;
     padding-top: 20px;
@@ -238,7 +244,10 @@ body {
 }
 
 .main_slide3 .dsgn {
-    background-color: rgb(123, 195, 243);
+    background-color: transparent;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
     height: 50%;
     width: 100%;
     position: absolute;
@@ -365,14 +374,17 @@ body {
 
 .reviews p {
 
-    background-color: rgb(123, 195, 243);
+    background-color: transparent;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
     padding: 20px;
     border: 2px solid #0e0d0d;
-    border-radius: 5px;
+    
     margin-top: 5px;
     font-size: 18px;
     font-weight: bold;
-    color: #f0f0f0;
+    color: black;
 
 }
 

@@ -47,9 +47,10 @@ export default function Login() {
         <div className="forms">
             <div className="form-details">
                 <h2>Welcome to EAT OUT</h2>
-                <p>Please log in using your personal information to stay connected with us.</p>
+                
             </div>
             <div className="form-content">
+            <p>Please log to stay connected with us.</p>
 
             <form onSubmit={sendData}>
                     <div className="inputs">

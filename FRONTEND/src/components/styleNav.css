@@ -1,7 +1,10 @@
 
-
+.logo :hover{
+    color: aliceblue;
+}
 .logo{
     font-size: 45px;
+    text-decoration:bold;
     
 }
 
@@ -14,6 +17,7 @@
 .bg-body-tertiary {
     display: flex;
     flex-wrap: wrap;
+    font-size: 20px;
     justify-content: space-between;
     align-items: center;
     height: 150px;

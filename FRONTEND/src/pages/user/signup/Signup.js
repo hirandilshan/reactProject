@@ -37,9 +37,10 @@ export default function Signup() {
 
             <div className="form-details">
                 <h2>Create Account</h2>
-                <p>please sign up using your personal information.</p>
+                
             </div>
             <div className="form-content">
+            <p>please sign up using your personal information.</p>
 
                 <form onSubmit={sendData}>
                     <div className="inputs">
