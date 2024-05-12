@@ -1,6 +1,15 @@
 
 
 
+
+
+.nav-link:hover {
+    color: rgb(247, 246, 245);
+    text-shadow: 0 2px 15px rgb(2, 2, 2);
+}
+.logo{
+    font-size: 35px;
+}
 .bg-body-tertiary {
     display: flex;
     flex-wrap: wrap;
@@ -10,14 +19,6 @@
     padding: 0 7vw;
     background-color: rgb(123, 195, 243) !important;
     border-bottom: 2px solid rgb(0, 2, 3);
-}
-
-.nav-link:hover {
-    color: rgb(247, 246, 245);
-    text-shadow: 0 2px 15px rgb(2, 2, 2);
-}
-.logo{
-    font-size: 35px;
 }
 
 .login{

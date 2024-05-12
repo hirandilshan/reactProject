@@ -63,11 +63,10 @@ function NavigationBar() {
         <Navbar.Brand href="/" className='logo'>EATOUT</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
+          
+            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }}
+            navbarScroll>
+          
             <Nav.Link className="nav-link" href="/foodMenu">Food Menu</Nav.Link>
             <Nav.Link href="/offers">Offers</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
