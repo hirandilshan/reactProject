@@ -21,11 +21,11 @@ import FoodItems from './pages/user/foodMenu/foodItems/FoodItems';
 
 function App() {
   return (
-    <Router>
-      <div>
-        <NavigationBar/>
-        <Routes>
-          <Route path='/' element={<Index />} />
+    <>
+    <NavigationBar/>
+    <Routes>
+      <Route>
+      <Route path='/' element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/facilities" element={<Facility />} />
           <Route path="/gallery" element={<Gallery />} />
@@ -38,10 +38,12 @@ function App() {
           <Route path='/foodCart' element={<FoodCart/>} />
           <Route path='/foodItems' element={<FoodItems/>} />
           <Route path='/search' element={<Search />} />
-        </Routes>
-        <Footer/>
-      </div>
-    </Router>
+
+      </Route>
+    </Routes>
+    <Footer/>
+
+    </>
 
   );
 }
