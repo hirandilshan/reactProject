@@ -51,7 +51,7 @@ router.route("/checkLogin").post((req,res)=>{
 
 })
 
-const jwt = require("jsonwebtoken");
+
 
 const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
