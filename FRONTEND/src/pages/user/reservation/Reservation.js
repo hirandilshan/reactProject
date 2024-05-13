@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import "./reservation.css";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Reservation() {
   const [date, setDate] = useState("");
@@ -16,12 +16,14 @@ export default function Reservation() {
 
   useEffect(() => {
     axios.defaults.withCredentials = true;
-    axios.get("https://reactproject-6y6b.onrender.com/user/token").then((result) => {
-      if (result.data.message === "Success") {
-      } else {
-        setUserName(null);
-      }
-    });
+    axios
+      .get("https://reactproject-6y6b.onrender.com/user/token")
+      .then((result) => {
+        if (result.data.message === "Success") {
+        } else {
+          setUserName(null);
+        }
+      });
   }, []);
 
   useEffect(() => {
@@ -79,7 +81,10 @@ export default function Reservation() {
         return;
       }
       axios
-        .post("https://reactproject-6y6b.onrender.com/reservation/book", newReservation)
+        .post(
+          "https://reactproject-6y6b.onrender.com/reservation/book",
+          newReservation
+        )
         .then(() => {
           alert("Reservation successful");
           setReservations([...reservations, newReservation]);

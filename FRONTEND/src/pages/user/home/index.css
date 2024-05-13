@@ -28,7 +28,7 @@ body {
 }
 
 .main_slide div:nth-child(2) {
-    
+
     max-width: 100%;
     max-height: auto;
     flex: 1;
@@ -215,11 +215,11 @@ body {
 
 .main_slide3 .fav-food .item {
     background-color: white;
-    
+
     margin-bottom: 30px;
-    box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
-  border-radius: 10px;
-    
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
     width: 220px;
     padding: 15px;
     padding-top: 20px;
@@ -245,9 +245,9 @@ body {
 
 .main_slide3 .dsgn {
     background-color: transparent;
-  box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
     height: 50%;
     width: 100%;
     position: absolute;
@@ -375,12 +375,12 @@ body {
 .reviews p {
 
     background-color: transparent;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  backdrop-filter: blur(6px);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
     padding: 20px;
     border: 2px solid #0e0d0d;
-    
+
     margin-top: 5px;
     font-size: 18px;
     font-weight: bold;
@@ -396,33 +396,33 @@ body {
         align-items: center;
         padding: 50px 50px;
     }
-    
+
     .letter-head {
         flex: 0.5;
     }
-    
+
     .letter-head h2 {
         font-size: 15px;
     }
-    
+
     .letter-head span {
         color: red;
     }
-    
+
     .letter-input {
         width: 100%;
         margin-top: 20px;
         display: flex;
         flex: 0.5;
     }
-    
+
     .letter-input div {
         width: 70%;
         display: flex;
         align-items: center;
         background-color: rgb(123, 195, 243);
     }
-    
+
     .letter-input input {
         font-size: 15px;
         padding: 10px;
@@ -431,21 +431,22 @@ body {
         border: none;
         background-color: rgb(123, 195, 243);
     }
-    
+
     .letter-input .red_btn {
         margin: 0;
         font-size: 10px;
         box-shadow: none;
         border-radius: 0 10px 10px 0;
     }
+
     .reviews {
-        
-        
+
+
         text-align: center;
     }
-    
+
     .reviews p {
-    
+
         background-color: rgb(123, 195, 243);
         padding: 10px;
         border: 1px solid #ddd;
@@ -454,7 +455,7 @@ body {
         font-size: 12px;
         font-weight: bold;
         color: #f0f0f0;
-    
+
     }
 
 }

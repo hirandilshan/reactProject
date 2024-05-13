@@ -1,9 +1,9 @@
 .content {
   background-image: url('../../../../public/images/background5.jpg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
   padding: 0 7vw;
 }
 
@@ -12,7 +12,7 @@
   margin: 0 auto;
   padding-top: 50px;
   padding-bottom: 50px;
-  
+
 
 }
 
@@ -43,7 +43,7 @@
   background-color: transparent;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   backdrop-filter: blur(6px);
 }
@@ -87,8 +87,8 @@
   background-color: transparent;
   color: #0a0a0a;
   border: none;
-  
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   cursor: pointer;
   font-weight: bolder;

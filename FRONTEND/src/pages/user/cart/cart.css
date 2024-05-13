@@ -4,10 +4,13 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     width: 100%;
-    min-height: 100vh; /* Make sure html and body cover full viewport height */
-    background-color: rgb(219, 227, 253); /* Set the background color here to cover full height */
+    min-height: 100vh;
+    /* Make sure html and body cover full viewport height */
+    background-color: rgb(219, 227, 253);
+    /* Set the background color here to cover full height */
 }
 
 .content {
