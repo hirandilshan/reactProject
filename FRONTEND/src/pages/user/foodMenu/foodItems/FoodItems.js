@@ -14,6 +14,18 @@ export default function Biscuits() {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
+    
+    useEffect(() => {
+        axios.defaults.withCredentials = true;
+      axios.get("https://reactproject-6y6b.onrender.com/user/token")
+        .then(result => {
+          if (result.data.message === "Success") {
+          } else {
+            setUserName(null);
+          }
+        });
+    }, []);
+
   useEffect(() => {
     console.log("searchName received:", submitedFoodType);
     if (submitedFoodType) {

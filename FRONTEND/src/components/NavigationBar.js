@@ -31,26 +31,33 @@ function NavigationBar() {
 
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  axios.defaults.withCredentials = true;
+  
   useEffect(() => {
-    axios.get("https://reactproject-6y6b.onrender.com/user/token")
-      .then(result => {
-        if (result.data === "Success") {
+    axios.get("https://reactproject-6y6b.onrender.com/user/token", { withCredentials: true })
+      .then(response => {
+        if (response.data.message === "Success") {
           setIsLoggedIn(true);
         } else {
           setIsLoggedIn(false);
         }
+      })
+      .catch(error => {
+        console.error("Error:", error);
       });
   }, []);
 
   const handleLogout = () => {
-    axios.get("https://reactproject-6y6b.onrender.com/user/logout")
-      .then(result => {
-        if (result.data === "logout") {
+    axios.get("https://reactproject-6y6b.onrender.com/user/logout", { withCredentials: true })
+      .then(response => {
+        if (response.data.message === "logout") {
           setIsLoggedIn(false);
+          
         }
+      })
+      .catch(error => {
+        console.error("Error:", error);
       });
-  };
+  }
   const handleSearch = (event) => {
     event.preventDefault();
     navigate('/search', { state: { searchName: input } });
@@ -63,10 +70,11 @@ function NavigationBar() {
         <Navbar.Brand href="/" className='logo'>EATOUT</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          
-            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }}
-            navbarScroll>
-          
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
             <Nav.Link className="nav-link" href="/foodMenu">Food Menu</Nav.Link>
             <Nav.Link href="/offers">Offers</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>

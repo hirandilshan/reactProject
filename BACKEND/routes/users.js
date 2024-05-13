@@ -56,11 +56,11 @@ router.route("/checkLogin").post((req,res)=>{
 const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-        return res.status(401).json({ message: "Unauthorized: No token provided" });
+        return res.json({ message: "Unauthorized: No token provided" });
     } else {
         jwt.verify(token, "jwt167486", (err, decoded) => {
             if (err) {
-                return res.status(401).json({ message: "Unauthorized: Invalid token" });
+                return res.json({ message: "Unauthorized: Invalid token" });
             } else {
                 req.user = decoded;
                 next();

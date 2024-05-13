@@ -20,6 +20,18 @@ export default function Index() {
 
 
     useEffect(() => {
+        axios.defaults.withCredentials = true;
+      axios.get("https://reactproject-6y6b.onrender.com/user/token")
+        .then(result => {
+          if (result.data.message === "Success") {
+          } else {
+            setUserName(null);
+          }
+        });
+    }, []);
+
+
+    useEffect(() => {
         
         const token = localStorage.getItem('token');
         console.log(token)
@@ -81,9 +93,11 @@ export default function Index() {
 
   return (
     
+    
         
       
       <div className="home">
+                    
         <Carousel>
       <Carousel.Item>
         <img src="images/1.jpg" alt="burger" text="First slide" />
@@ -124,6 +138,7 @@ export default function Index() {
                 <Link to="/foodMenu">
                     <button type="submit" className="red_btn">Visit Now</button>
                 </Link>
+                
             </div>
             <div>
                 <img src="images/burger.jpg" alt="burger"></img>

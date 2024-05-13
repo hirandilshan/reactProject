@@ -3,7 +3,8 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import "./reservation.css";
 import Form from "react-bootstrap/Form";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
+import { useNavigate } from 'react-router-dom';
 
 export default function Reservation() {
   const [date, setDate] = useState("");
@@ -11,6 +12,17 @@ export default function Reservation() {
   const [tableNum, setTableNum] = useState("");
   const [userName, setUserName] = useState("");
   const [reservations, setReservations] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.defaults.withCredentials = true;
+    axios.get("https://reactproject-6y6b.onrender.com/user/token").then((result) => {
+      if (result.data.message === "Success") {
+      } else {
+        setUserName(null);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     axios
@@ -48,33 +60,39 @@ export default function Reservation() {
   }, []);
 
   function resData(e) {
-    e.preventDefault();
+    if (userName) {
+      e.preventDefault();
 
-    const newReservation = {
-      date,
-      time,
-      tableNum,
-      userName,
-    };
-    const isAlreadyBooked = reservations.some(res => 
-      res.date === date && res.time === time && res.tableNum === tableNum);
+      const newReservation = {
+        date,
+        time,
+        tableNum,
+        userName,
+      };
+      const isAlreadyBooked = reservations.some(
+        (res) =>
+          res.date === date && res.time === time && res.tableNum === tableNum
+      );
 
-  if (isAlreadyBooked) {
-      alert("This table is already booked for the selected date and time.");
-      return; 
+      if (isAlreadyBooked) {
+        alert("This table is already booked for the selected date and time.");
+        return;
+      }
+      axios
+        .post("https://reactproject-6y6b.onrender.com/reservation/book", newReservation)
+        .then(() => {
+          alert("Reservation successful");
+          setReservations([...reservations, newReservation]);
+        })
+        .catch((err) => {
+          alert(err.response.data.message || "Error booking reservation");
+        });
+    } else {
+      alert("Please Login");
+      navigate("/login");
+    }
   }
 
-  axios
-      .post("https://reactproject-6y6b.onrender.com/reservation/book", newReservation)
-      .then(() => {
-          alert("Reservation successful");
-          setReservations([...reservations, newReservation]); 
-      })
-      .catch((err) => {
-          alert(err.response.data.message || "Error booking reservation");
-      });
-}
-  
   return (
     <div>
       <div className="content">
@@ -144,34 +162,32 @@ export default function Reservation() {
                 Book Now
               </button>
             </form>
-            </div>
-            <div className="form-details">
+          </div>
+          <div className="form-details">
             <h2>Previous Reservations</h2>
           </div>
           <Table striped="columns">
-      <thead>
-        <tr>
-          <th>Reservation Date</th>
-          <th>Time</th>
-          <th>Table Number</th>
-        </tr>
-      </thead>
-      <tbody>
-      {reservations.map((reservations) => {
-              return (
-                <>
-                  <tr>
-                    <td>{reservations.date}</td>
-                    <td>{reservations.time}</td>
-                    <td>{reservations.tableNum}</td>
-                    
-                  </tr>
-                </>
-              );
-            })}
-      </tbody>
-    </Table>
-          
+            <thead>
+              <tr>
+                <th>Reservation Date</th>
+                <th>Time</th>
+                <th>Table Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reservations.map((reservations) => {
+                return (
+                  <>
+                    <tr>
+                      <td>{reservations.date}</td>
+                      <td>{reservations.time}</td>
+                      <td>{reservations.tableNum}</td>
+                    </tr>
+                  </>
+                );
+              })}
+            </tbody>
+          </Table>
         </div>
       </div>
     </div>

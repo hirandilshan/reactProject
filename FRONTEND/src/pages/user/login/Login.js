@@ -24,8 +24,10 @@ export default function Login() {
             .then(result => {
                 console.log(result);
                 if (result.data.message === "Success") {
+                    
                     // Assume token is received in result.data.token if back-end is adjusted to send token
                     const token = result.data.token;
+                    
                     localStorage.setItem('token', token); 
                     navigate('/'); // Navigate to the home page or dashboard
                     window.location.reload();
