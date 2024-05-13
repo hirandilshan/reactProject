@@ -51,35 +51,32 @@ router.route("/checkLogin").post((req,res)=>{
 
 })
 
-const verifyUser = (req, res, next) =>{
-    const token =req.cookies.token;
-    if(!token){
-        return res.json("The token was not availble")
-    }else{
-        jwt.verify(token,"jwt167486",(err,decoded) =>{
+const jwt = require("jsonwebtoken");
+
+const verifyUser = (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({ message: "Unauthorized: No token provided" });
+    } else {
+        jwt.verify(token, "jwt167486", (err, decoded) => {
             if (err) {
                 return res.status(401).json({ message: "Unauthorized: Invalid token" });
             } else {
                 req.user = decoded;
                 next();
             }
-        })
+        });
     }
-}
+};
 
 router.route('/token').get(verifyUser, (req, res) => {
+    return res.json({ message: "Success" });
+});
 
-    return res.json("Success")
-
-
-})
-
-router.route('/logout').get((req,res)=>{
-    res.clearCookie('token')
-    return res.json("logout")
-})
-
-
+router.route('/logout').get((req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: "Logout successful" });
+});
 
 
 
