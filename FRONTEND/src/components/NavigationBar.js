@@ -39,8 +39,10 @@ function NavigationBar() {
     axios.get("https://reactproject-6y6b.onrender.com/user/logout", { withCredentials: true })
       .then(response => {
         if (response.data.message === "logout") {
+          alert(response.data.message);
           setIsLoggedIn(false);
         }
+        alert(response.data.message);
       })
       .catch(error => {
         console.error("Error:", error);
