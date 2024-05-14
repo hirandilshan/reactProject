@@ -70,7 +70,7 @@ router.route("/token").get(verifyUser, (req, res) => {
 });
 
 router.route("/logout").get((req, res) => {
-  res.clearCookie("token", { httpOnly: true, secure: true, sameSite: 'None' });
+  res.clearCookie("token");
   res.status(200).json({ message: "logout" });
 });
 
