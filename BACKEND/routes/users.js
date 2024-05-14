@@ -34,7 +34,7 @@ router.route("/checkLogin").post((req, res) => {
           const token = jwt.sign({ email: user.email }, "jwt167486", {
             expiresIn: "1d",
           });
-          res.cookie("token", token, { httpOnly: true, secure: true,sameSite: 'None' });
+          res.cookie("token", token, { httpOnly: true, secure: true,sameSite: 'Lax' });
           res.json({ message: "Success", token });
         } else {
           res.status(401).json({ message: "Password is incorrect" });
@@ -70,7 +70,7 @@ router.route("/token").get(verifyUser, (req, res) => {
 });
 
 router.route("/logout").get((req, res) => {
-  res.clearCookie("token", { httpOnly: true, secure: true, sameSite: 'None' });
+  res.clearCookie("token", { httpOnly: true, secure: true, sameSite: 'Lax' });
   return res.json({ message: "logout" });
 });
 
