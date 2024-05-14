@@ -2,6 +2,8 @@ const router = require("express").Router();
 let User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 router.route("/add").post((req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
@@ -70,7 +72,13 @@ router.route("/token").get(verifyUser, (req, res) => {
 });
 
 router.route("/logout").get((req, res) => {
-  res.clearCookie("token");
+  console.log('Logout route hit');
+  console.log('Cookies:', req.cookies);
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? 'None' : 'Lax'
+  });
   res.status(200).json({ message: "logout" });
 });
 
