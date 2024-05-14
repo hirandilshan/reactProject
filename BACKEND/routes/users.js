@@ -67,13 +67,13 @@ const verifyUser = (req, res, next) => {
   }
 };
 
-const clearCookie = (req, res, next) => {
+const clear = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
     return res.json({ message: "Unauthorized: No token provided" });
   } else {
     
-      res.clearCookie(token);
+      res.clearCookie(token, { httpOnly: true, secure: isProduction,sameSite: isProduction ? 'None' : 'Lax' });;
         next();
       
     
@@ -84,7 +84,7 @@ router.route("/token").get(verifyUser, (req, res) => {
   return res.json({ message: "Success" });
 });
 
-router.route("/logout").get(clearCookie,(req, res) => {
+router.route("/logout").get(clear,(req, res) => {
   return res.json({ message: "logout" });
 });
 
