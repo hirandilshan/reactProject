@@ -34,7 +34,7 @@ router.route("/checkLogin").post((req, res) => {
           const token = jwt.sign({ email: user.email }, "jwt167486", {
             expiresIn: "1d",
           });
-          res.cookie("token", token, { httpOnly: true, sameSite: 'None' });
+          res.cookie("token", token, { httpOnly: true, secure: true,sameSite: 'None' });
           res.json({ message: "Success", token });
         } else {
           res.status(401).json({ message: "Password is incorrect" });
