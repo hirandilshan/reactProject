@@ -67,19 +67,25 @@ const verifyUser = (req, res, next) => {
   }
 };
 
+const clearCookie = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.json({ message: "Unauthorized: No token provided" });
+  } else {
+    
+      res.clearCookie(token);
+        next();
+      
+    
+  }
+};
+
 router.route("/token").get(verifyUser, (req, res) => {
   return res.json({ message: "Success" });
 });
 
-router.route("/logout").get((req, res) => {
-  console.log('Logout route hit');
-  console.log('Cookies:', req.cookies);
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? 'None' : 'Lax'
-  });
-  res.status(200).json({ message: "logout" });
+router.route("/logout").get(clearCookie,(req, res) => {
+  return res.json({ message: "logout" });
 });
 
 router.route("/display").get((req, res) => {
