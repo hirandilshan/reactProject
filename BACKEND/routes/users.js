@@ -2,8 +2,6 @@ const router = require("express").Router();
 let User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 router.route("/add").post((req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
@@ -36,7 +34,7 @@ router.route("/checkLogin").post((req, res) => {
           const token = jwt.sign({ email: user.email }, "jwt167486", {
             expiresIn: "1d",
           });
-          res.cookie("token", token, { httpOnly: true, secure: isProduction,sameSite: isProduction ? 'None' : 'Lax' });
+          res.cookie("token", token, { httpOnly: true, secure: true,sameSite: 'None' });
           res.json({ message: "Success", token });
         } else {
           res.status(401).json({ message: "Password is incorrect" });
@@ -67,25 +65,13 @@ const verifyUser = (req, res, next) => {
   }
 };
 
-const clear = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.json({ message: "Unauthorized: No token provided" });
-  } else {
-    
-      res.clearCookie(token, { httpOnly: true, secure: isProduction,sameSite: isProduction ? 'None' : 'Lax' });;
-        next();
-      
-    
-  }
-};
-
 router.route("/token").get(verifyUser, (req, res) => {
   return res.json({ message: "Success" });
 });
 
-router.route("/logout").get(clear,(req, res) => {
-  return res.json({ message: "logout" });
+router.route("/logout").get((req, res) => {
+  res.clearCookie("token");
+  res.status(200).json({ message: "logout" });
 });
 
 router.route("/display").get((req, res) => {
